@@ -1,0 +1,16 @@
+<div class="d-flex fixed-top flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><a href="{{ path('home') }}">Marketbi</a> </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Faites une annonces</a>
+    {% if InfoUser is empty %}
+    <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Connexion</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="{{ path('app_register') }}">Inscription</a>
+    {% else %}
+    <button type="button" name="button" class="btn btn-sm btn-outline-primary">{{ InfoUser.nomComplet}}</button>
+    <a class="btn btn-sm btn-outline-secondary" href="{{ path('user_account') }}">Mon compte</a>
+    <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Me deconnecter</a>
+
+    {% endif %}
+
+</div>

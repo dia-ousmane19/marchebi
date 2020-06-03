@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/login.css') }}">{% endblock %}
+{% block title %}Sign-up{% endblock %}
+
+{% block body %}
+<div class="d-flex fixed-top flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><a href="{{ path('home') }}">Marketbi</a> </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="btn btn-outline-primary" href="{{ path('app_register') }}">Faites une annonces</a>
+    <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Connexion</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="{{ path('app_register') }}">Inscription</a>
+</div>
+<div style="margin-top:120px">
+
+
+{{ form_start(registrationForm,{'class':'form-signin'}) }}
+
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>
+        <p>Build form controls with floating labels via the pseudo-element.</p>
+      </div>
+      <div class="form-label-group">
+        {{ form_row(registrationForm.email) }}
+      </div>
+      <div class="form-label-group">
+        {{ form_row(registrationForm.NomComplet) }}
+      </div>
+      <div class="form-label-group">
+        {{ form_row(registrationForm.NumeroDeTel) }}
+      </div>
+
+      <div class="form-label-group">
+          {{ form_row(registrationForm.Password) }}
+      </div>
+
+      <!-- <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div> -->
+      <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
+  {{ form_end(registrationForm) }}
+
+</div>
+  {% endblock %}
