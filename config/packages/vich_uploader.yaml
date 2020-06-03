@@ -1,0 +1,8 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       chemin_images:
+           uri_prefix: '%app.chemin_images%'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+           upload_destination: '%kernel.project_dir%/public%app.chemin_images%'

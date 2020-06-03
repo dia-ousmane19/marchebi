@@ -1,0 +1,160 @@
+easy_admin:
+      site_name: 'Gestion de marketbi'
+      user:
+        display_name: true
+        display_avatar: true
+      design:
+        form_theme:
+          - "@EasyAdmin/form/bootstrap_4.html.twig"
+          - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+        menu:
+            - { label: 'Annonces' }
+            - { entity: 'Annonces' , label: 'Annonces', icon: 'book' }
+            - { label: 'Categorie' }
+            - { entity: 'Categorie' , label: 'Categories', icon: 'tag' }
+            - { label: 'Rubrique' }
+            - { entity: 'Rubrique' , label: 'Rubriques', icon: 'tag' }
+            - { label: 'Region' }
+            - { entity: 'Region' , label: 'Region', icon: 'tag' }
+            - { label: 'Zone' }
+            - { entity: 'Zone' , label: 'Zone', icon: 'tag' }
+            - { label: 'Quartier' }
+            - { entity: 'Quartier' , label: 'Quartier', icon: 'tag' }
+            - { label: 'Images' }
+            - { entity: 'Images' , label: 'Images', icon: 'tag' }
+            # - { label: 'Utilisateurs' }
+            # - { entity: 'Users' , label: 'Utilisateurs', icon: 'user' }
+      formats:
+            datetime: 'd/m/Y H:i'
+      entities:
+          Annonces:
+                   class: App\Entity\Annonces
+                   label: Annonces
+                   list:
+                        fields:
+                              - id
+                              - titre
+                              - { property: 'created_at', label: 'Cree' }
+                              - { property: 'updated_at', label: 'Mise a jour' }
+                              - { property: 'expired_at', label: 'expiree a' }
+                              - Users
+                              - prix
+                              - prix_negociable
+                              - possibilite_echange
+                              - images
+                              - categorie
+                              - etat
+
+
+                        sort: [ 'created_at','desc' ]
+                   form:
+                        fields:
+                              - titre
+                              - { property: 'description', type: 'fos_ckeditor', type_options: { config_name: 'my_config' }}
+                              - categorie
+                              - etat
+                              - region
+                              - quartier
+                              - users
+                              - prix
+                              - zone
+          Categorie:
+                     class: 'App\Entity\Categorie'
+                     label: Categories
+                     list:
+                          fields:
+
+                                - nom
+                                - rubrique
+                          sort: ['nom', 'asc']
+                     form:
+                         fields:
+                              - nom
+                              - rubrique
+          Rubrique:
+                     class: 'App\Entity\Rubrique'
+                     label: Rubrique
+                     list:
+                          fields:
+                                - id
+                                - nom
+                          sort: ['nom', 'DESC']
+                     form:
+                         fields:
+                              - nom
+          Region:
+                     class: 'App\Entity\Region'
+                     label: Region
+                     list:
+                          fields:
+                                - id
+                                - nom
+                          sort: ['nom', 'asc']
+                     form:
+                         fields:
+                              - nom
+          Zone:
+                     class: 'App\Entity\Zone'
+                     label: Zone
+                     list:
+                          fields:
+                                - id
+                                - nom
+                          sort: ['nom', 'asc']
+                     form:
+                         fields:
+                              - nom
+          Quartier:
+                     class: 'App\Entity\Quartier'
+                     label: Quartier
+                     list:
+                          fields:
+                                - id
+                                - nom
+                          sort: ['nom', 'asc']
+                     form:
+                         fields:
+                              - nom
+          Images:
+                     class: 'App\Entity\Images'
+                     label: Images
+                     list:
+                          fields:
+                                - id
+                                - { property: 'nom', label: 'Image', type: 'image', base_path: '%app.chemin_images%' }
+                                - annonces
+                                - image_principale
+                          sort: ['nom', 'asc']
+                     form:
+                         fields:
+                               - { property: 'imageFile', type: 'vich_image', label: 'Image' }
+                               - annonces
+          # MotCles:
+          #         class: 'App\Entity\MotCles'
+          #         label: Mots-cles
+          #         list:
+          #               fields:
+          #                   - motCles
+          #                   - articles
+          #               sort: ['motCles','asc']
+          #         form:
+          #             fields:
+          #                  - motCles
+          # Users:
+          #     class: App\Entity\Users
+          #     label: 'Utilisateurs'
+          #     list:
+          #         fields:
+          #               - id
+          #               - email
+          #               - NumeroDeTelephone
+          #               - Adresse
+          #               - actif
+          #               - { property: 'roles', label: 'Roles', type: json_array }
+          #     form:
+          #         - email
+          #         - { property: 'Roles', label: 'roles', type_options:{ expanded: true, multiple: true,choices: { 'Utilisateur':'ROLE_USER','Administrateur':'ROLE_ADMIN' }}}
+          #
+          #         - email
+          #         - NumeroDeTelephone
+          #         - Adresse
