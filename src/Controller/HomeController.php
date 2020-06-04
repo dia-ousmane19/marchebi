@@ -12,6 +12,7 @@ use App\Repository\CategorieRepository;
 use App\Repository\AnnoncesRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 
@@ -40,8 +41,6 @@ class HomeController extends AbstractController
   */
   public function AllAnnoncesByCategorie(PaginatorInterface $paginator,Request $request,AnnoncesRepository $annoncesRepository,  $slug)
   {
-
-
     $InfoUser=$this->getUser();
     //$annonces=$categorieRepository->findAnnonceBySlug($slug);
     //dd($annonces);
@@ -55,8 +54,7 @@ class HomeController extends AbstractController
        6 /*limit per page*/
    );
     if (!$annonces) {
-      throw $this->CreateNotFoundException('Aucune annonce disponible');
-
+      throw $this->createNotFoundException('Aucune annonce disponible');
     }
     // dd($annonces);
 
@@ -71,7 +69,6 @@ class HomeController extends AbstractController
   */
   public function getAnnonceComplet(AnnoncesRepository $annoncesRepository,$slug)
   {
-
     $annonceComplete=$annoncesRepository->FindAnnonceBySlug($slug);
     //dd($annonceComplete);
     $InfoUser=$this->getUser();

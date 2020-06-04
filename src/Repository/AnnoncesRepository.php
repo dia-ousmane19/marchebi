@@ -63,7 +63,6 @@ class AnnoncesRepository extends ServiceEntityRepository
             ->Where('a.expired_at >= :date')
             ->setParameter('val', $slug)
             ->setParameter('date', new DateTime())
-
             ->getQuery()
             ->getResult()
         ;
