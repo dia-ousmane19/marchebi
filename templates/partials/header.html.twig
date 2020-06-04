@@ -1,16 +1,16 @@
 <div class="d-flex fixed-top flex-column flex-md-row align-items-center p-3 px-md-4 mb-4 bg-white border-bottom box-shadow">
   <!-- <h5 class="my-0 mr-md-auto font-weight-normal"><a href="#">Marketbi</a> </h5> -->
-    <img class="my-0 mr-md-auto mb-2" src="{{ asset('images/logo.jpg')}}" alt="" width="128" height="128">
+  <a class="my-0 mr-md-auto mb-2" href="{{ path ('home')}}"><img  src="{{ asset('images/logo.jpg')}}" alt="" width="128" height="128"></a>
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="btn btn-primary" href="{{ path('app_login') }}">Faites une annonces</a>
     {% if InfoUser is empty %}
     <a class="btn btn-primary" href="{{ path('app_login') }}">Connexion</a>
   </nav>
-    {% else %}
-    <button type="button" name="button" class="btn btn-sm btn-outline-primary">{{ InfoUser.nomComplet}}</button>
-    <a class="btn btn-sm btn-outline-secondary" href="{{ path('user_account') }}">Mon compte</a>
-    <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Me deconnecter</a>
+  {% else %}
+  <button type="button" name="button" class="btn btn-sm btn-outline-primary">{{ InfoUser.nomComplet}}</button>
+  <a class="btn btn-sm btn-outline-secondary" href="{{ path('user_account') }}">Mon compte</a>
+  <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Me deconnecter</a>
 
-    {% endif %}
+  {% endif %}
 
 </div>
