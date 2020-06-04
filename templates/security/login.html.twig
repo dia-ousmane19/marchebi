@@ -4,7 +4,7 @@
 
 
 {% block body %}
-<form method="post" style="margin-top:100px" class="form-signin">
+<form method="post" style="margin-top:200px" class="form-signin">
   {% if error %}
   <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
   {% endif %}
@@ -15,7 +15,7 @@
   </div>
   {% endif %}
   <div class="text-center mb-4">
-    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <img class="mb-4" src="{{ asset('images/logoLogin.png')}}" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
     <p>Build form controls with floating labels via the pseudo-element.</p>
   </div>
