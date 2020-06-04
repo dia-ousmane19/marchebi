@@ -5,7 +5,6 @@
     {% if InfoUser is empty %}
     <a class="btn btn-outline-primary" href="{{ path('app_login') }}">Connexion</a>
   </nav>
-  <a class="btn btn-outline-primary" href="{{ path('app_register') }}">Inscription</a>
     {% else %}
     <button type="button" name="button" class="btn btn-sm btn-outline-primary">{{ InfoUser.nomComplet}}</button>
     <a class="btn btn-sm btn-outline-secondary" href="{{ path('user_account') }}">Mon compte</a>

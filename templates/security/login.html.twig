@@ -4,7 +4,7 @@
 
 
 {% block body %}
-<form method="post" class="form-signin">
+<form method="post" style="margin-top:100px" class="form-signin">
   {% if error %}
   <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
   {% endif %}
@@ -34,15 +34,19 @@
   {#
   Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
   See https://symfony.com/doc/current/security/remember_me.html
-
-  <div class="checkbox mb-3">
+  #}
+  <div class="form-check mb-3">
   <label>
-  <input type="checkbox" name="_remember_me"> Remember me
+  <input type="checkbox" class="form-check-input" name="_remember_me"> Rester connecter
   </label>
   </div>
-  #}
+
 
   <button class="btn btn-lg btn-primary btn-block" type="submit">Me connecter</button>
+  <a class="btn btn-lg btn-secondary btn-block" href="{{ path('home')}}">Accueil</a>
+
+  <p class="mt-5 mb-3 text-muted text-center">Si vous n'êtes pas encore inscrit, <a href="{{path('app_register')}}">cliquez ici pour créer un compte</a> </p>
+  <p class="mt-5 mb-3 text-muted text-center"><a href="#">J'ai perdu mon mot de passe</a> </p>
   <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
 </form>
 
