@@ -12,32 +12,61 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email',EmailType::class)
-            ->add('NumeroDeTel',TextType::class)
-            ->add('NomComplet',TextType::class)
+            ->add('email',EmailType::class,[
+              'label' => false,
+              'attr' => [
+                'class'=>'form-control',
+                'placeholder' =>'Adresse email'
+              ]
+            ])
+            ->add('NumeroDeTel',TextType::class,[
+              'label' => false,
+              'attr' => [
+                'class'=>'form-control',
+                'placeholder' =>'Numéro de téléphone'
+              ]
+            ])
+            ->add('NomComplet',TextType::class,[
+              'label' => false,
+              'attr' => [
+                'class'=>'form-control',
+                'placeholder' =>'Votre nom complet'
+              ]
+            ])
             ->add('Password', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
 
                 'mapped' => false,
+                  'label' => false,
+                'attr' => [
+                  'placeholder' => 'Votre mot de passe'
+                ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Entrer votre mot de passe svp!',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe ne doit pas dépasser au moins  {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
             ])
+            ->add('add', SubmitType::class, [
+               'label' => 'Valider',
+               'attr' => [
+                   'class' => 'btn waves-effect btn-primary waves-light'
+               ]
+           ])
         ;
     }
 

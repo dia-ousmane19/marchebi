@@ -12,36 +12,37 @@
 </div>
 
 <div id="form_inscription">
-
-{{ form_start(registrationForm,{'class':'form-signin'}) }}
-
+  <div class="container" >
+    <div class="col-md-4 offset-md-4">
       <div class="text-center mb-4">
-        <img class="mb-4" src="{{ asset('images/logoLogin.png')}}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>
-        <p>Build form controls with floating labels via the pseudo-element.</p>
-      </div>
-      <div class="form-label-group">
-        {{ form_row(registrationForm.email) }}
-      </div>
-      <div class="form-label-group">
-        {{ form_row(registrationForm.NomComplet) }}
-      </div>
-      <div class="form-label-group">
-        {{ form_row(registrationForm.NumeroDeTel) }}
+        <div class="">
+          <img class="mb-4" src="{{ asset('images/logoLogin.png')}}" alt="" width="72" height="72">
+        </div>
+        <h1 class="display-5 mb-3 font-weight-normal">Inscrivez-vous</h1>
       </div>
 
-      <div class="form-label-group">
-          {{ form_row(registrationForm.Password) }}
-      </div>
+      {{ form_start(registrationForm) }}
+      {{ form_widget(registrationForm) }}
+
+
 
       <!-- <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div> -->
-      <button class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
-      <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
+      <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div> -->
   {{ form_end(registrationForm) }}
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
+</div>
+</div>
+
+
 
 </div>
-  {% endblock %}
+
+
+
+
+
+
+{% endblock %}
