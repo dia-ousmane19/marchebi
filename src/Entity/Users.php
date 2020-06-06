@@ -12,7 +12,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cet e-mail")
+ * @UniqueEntity(fields={"numero_de_tel"}, message="Il existe déjà un compte avec ce numéro de téléphone")
  */
 class Users implements UserInterface
 {
@@ -24,7 +25,8 @@ class Users implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     *
+     * @ORM\Column(type="string", length=180, unique=true,nullable=true)
      */
     private $email;
 
@@ -45,7 +47,7 @@ class Users implements UserInterface
     private $nom_complet;
 
     /**
-     * @ORM\Column(type="string", length=70)
+     * @ORM\Column(type="string",unique=true, length=70)
      */
     private $numero_de_tel;
 

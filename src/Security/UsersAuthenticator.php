@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\Users;
+//use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,8 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+
+
 
 class UsersAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
@@ -66,12 +69,18 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
-
-        $user = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $credentials['email']]);
+        // dd($credentials['email']);
+        // $user=$userRepository->findByEmailOrTel($credentials['email']);
+        // dd($user);
+        //$user = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $credentials['email'],
+       //'numero_de_tel' => $credentials['email'] ]);
+        //var_dump($user);die();
+       //$user = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $credentials['email']]);
+      $user = $this->entityManager->getRepository(Users::class)->findByEmailOrTel($credentials['email']);
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Nous sommes désolées!,nn n\'a pas trouvé votre adresse email!');
+            throw new CustomUserMessageAuthenticationException('nous sommes désolés nous n\'avons pas pu établir la connexion avec cette adresse email ou ce numéro de téléphone. Veuillez vous inscrire svp!');
         }
 
         return $user;

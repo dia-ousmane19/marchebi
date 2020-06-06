@@ -22,6 +22,7 @@ class RegistrationController extends AbstractController
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+    
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -31,6 +32,7 @@ class RegistrationController extends AbstractController
                     $form->get('Password')->getData()
                 )
             );
+          //  dd($user);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
