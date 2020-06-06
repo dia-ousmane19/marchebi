@@ -69,13 +69,7 @@ class UsersAuthenticator extends AbstractFormLoginAuthenticator implements Passw
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
         }
-        // dd($credentials['email']);
-        // $user=$userRepository->findByEmailOrTel($credentials['email']);
-        // dd($user);
-        //$user = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $credentials['email'],
-       //'numero_de_tel' => $credentials['email'] ]);
-        //var_dump($user);die();
-       //$user = $this->entityManager->getRepository(Users::class)->findOneBy(['email' => $credentials['email']]);
+      
       $user = $this->entityManager->getRepository(Users::class)->findByEmailOrTel($credentials['email']);
 
         if (!$user) {
