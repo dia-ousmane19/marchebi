@@ -85,3 +85,8 @@ footer p {
       margin-top: 250px;
     }
    }
+   @media only screen and (min-width: 636px) {
+    #description_od{
+      display: none;
+    }
+  }
