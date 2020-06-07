@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AnnoncesRepository;
 use Symfony\Component\HttpFoundation\Session\Session;
+Use App\Repository\ImagesRepository;
 
 
 class UserAccountController extends AbstractController
@@ -36,8 +37,20 @@ class UserAccountController extends AbstractController
   *
   * @Route("/image-principale/{idAnnonce}", name="ImagePrincipale")
   */
-  public function ImagePrincipale($idAnnonce)
+  public function ImagePrincipale($idAnnonce,ImagesRepository $imagesRepository)
   {
-    return $this->render('user_account/choisieImagePrincipale.html.twig');
+
+   $MesImages=$imagesRepository->findByImage($idAnnonce);
+   
+
+    return $this->render('user_account/choisieImagePrincipale.html.twig',[
+      'MesImages' => $MesImages
+    ]);
   }
+
+
+
+
+
+
 }

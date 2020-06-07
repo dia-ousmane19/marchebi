@@ -10,7 +10,7 @@ security:
             entity:
                 class: App\Entity\Users
                 property: email
-                
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -43,3 +43,4 @@ security:
         - { path: ^/mon-compte, roles: ROLE_USER }
         - { path: ^/annonces/new, roles: ROLE_USER }
         - { path: ^/annonces, roles: ROLE_ADMIN }
+        - { path: ^/image-principale/, roles: ROLE_USER }

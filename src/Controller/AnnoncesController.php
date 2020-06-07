@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/annonces")
@@ -57,6 +56,7 @@ class AnnoncesController extends AbstractController
            // on gere l'image ici
 
            $images=$form->get('images')->getData();
+
           //
           foreach ($images as  $image) {
           $fichier=md5(uniqid()).'.'.$image->guessExtension();
@@ -82,19 +82,15 @@ class AnnoncesController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
             $entityManager->flush();
-        $session= new session();
-        $session->getFlashBag()->add(
-          'warning',
-          'Veuillez ajoutez une image principale <a href="#">ici</a>'
 
-        );
             return $this->redirectToRoute('user_account');
         }
 
         return $this->render('annonces/new.html.twig', [
             'annonce' => $annonce,
             'form' => $form->createView(),
-            'InfoUser'=>$InfoUser
+            'InfoUser'=>$InfoUser,
+
         ]);
     }
 

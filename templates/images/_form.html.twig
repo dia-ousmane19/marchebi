@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="form-control">
+      <label> <span class="badge badge-danger">dajhdkj</span> </label>
+        {{ form_row(form.image)}}
+    </div>
+
+    <button class="btn btn-sm btn-danger">{{ button_label|default('valider') }}</button>
+{{ form_end(form) }}

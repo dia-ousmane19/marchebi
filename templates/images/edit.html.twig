@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Images{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="jumbotron border border-primary">
+    <h1 class="display-4">Une image principale</h1>
+    <p class="lead">Une image principale designe l'image qui apparait en premiere dans votre annonce </p>
+    <hr class="my-4">
+    <p>Veuillez cocher cette case pour mettre cette image comme principale ou decocher pour l'enlever</p>
+    <p class="lead">
+      {{ include('images/_form.html.twig') }}
+
+    </p>
+    <p class="lead"> <a class="btn btn-sm btn-primary" href="{{path('user_account')}}">Retour</a></p>
+  </div>
+
+</div>
+
+
+
+
+{% endblock %}

@@ -4,7 +4,7 @@
 
 
 {% block body %}
-<form method="post" style="margin-top:30px" class="form-signin">
+<form method="post" style="margin-top:10px" class="form-signin">
   {% if error %}
   <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
   {% endif %}
@@ -22,7 +22,7 @@
 
   <div class="form-label-group">
     <input type="text" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputEmail">Email ou Numero de telephone</label>
+    <label for="inputEmail">Email ou Numéro de téléphone</label>
   </div>
 
   <div class="form-label-group">
@@ -46,7 +46,7 @@
   <a class="btn btn-lg btn-secondary btn-block" href="{{ path('home')}}">Accueil</a>
 
   <p class="mt-5 mb-3 text-muted text-center">Si vous n'êtes pas encore inscrit, <a href="{{path('app_register')}}">cliquez ici pour créer un compte</a> </p>
-  <p class="mt-5 mb-3 text-muted text-center"><a href="#">J'ai perdu mon mot de passe</a> </p>
+  <!-- <p class="mt-5 mb-3 text-muted text-center"><a href="#">J'ai perdu mon mot de passe</a> </p> -->
   <p class="mt-5 mb-3 text-muted text-center">&copy; 2019-2020</p>
 </form>
 

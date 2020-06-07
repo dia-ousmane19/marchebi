@@ -1,0 +1,15 @@
+@media only screen and (max-width: 2000px) {
+  #annonce-depot{
+    margin-top: 210px;
+  }
+ }
+ @media only screen and (max-width: 768px) {
+   #annonce-depot{
+     margin-top: 230px;
+   }
+  }
+  @media only screen and (max-width: 420px) {
+    #annonce-depot{
+      margin-top: 260px;
+    }
+   }

@@ -80,11 +80,16 @@ footer p {
      margin-top: 200px;
    }
   }
-  @media only screen and (max-width: 269px) {
+  @media only screen and (max-width: 369px) {
+    #index{
+      margin-top: 230px;
+    }
+   }
+  /* @media only screen and (max-width: 269px) {
     #index{
       margin-top: 250px;
     }
-   }
+   } */
    /* @media only screen and (min-width: 636px) {
     #description_od{
       display: none;
