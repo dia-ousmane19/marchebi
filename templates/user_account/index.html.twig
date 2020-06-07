@@ -40,7 +40,7 @@ function sendPaymentInfos(123, 'INTDK6177', '6K5Ck6IqrSp7e3l6aswSuh4orVAdrevriIr
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade " id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="">
-          <h1 class="display-4">Mes annonces expirees</h1>
+          <h2> <span class="badge badge-primary">Mes annonces expirées</span> </h2>
           <div class="album py-5 bg-light">
             <div class="container">
 
@@ -68,7 +68,7 @@ function sendPaymentInfos(123, 'INTDK6177', '6K5Ck6IqrSp7e3l6aswSuh4orVAdrevriIr
 
                         </div>
                         <small class="text-muted">{{ MesAnnonce.updatedAt |format_date}}</small>
-                        <small class="alert alert-danger text-muted">Expiree le {{ MesAnnonce.expiredAt |format_date}}</small>
+                        <small class="alert alert-danger text-muted">expirée le {{ MesAnnonce.expiredAt |format_date}}</small>
 
                       </div>
                       <small class="text-muted"> <a href="{{ path('ImagePrincipale',{'slug':MesAnnonce.id}) }}">Veuillez choisir une principal</a> </small>
@@ -77,7 +77,7 @@ function sendPaymentInfos(123, 'INTDK6177', '6K5Ck6IqrSp7e3l6aswSuh4orVAdrevriIr
                 </div>
                 {% else %}
                 <div class="alert alert-warning">
-                  Il y n'a pas encore d'annonce expiree
+                  Il y n'a pas encore d'annonce expirée
                 </div>
                 {% endfor %}
 
@@ -98,7 +98,7 @@ function sendPaymentInfos(123, 'INTDK6177', '6K5Ck6IqrSp7e3l6aswSuh4orVAdrevriIr
       </div>
       <div class="tab-pane fade" id="AnnonceEnligne" role="tabpanel" aria-labelledby="Annonce-En-ligne-tab">
         <!-- debu annonce en ligne -->
-        <h1 class="display-4">Mes annonces en ligne</h1>
+        <h2> <span class="badge badge-primary">Mes annonces en ligne</span> </h2>
         <div class="album py-5 bg-light">
           <div class="container">
 
@@ -128,7 +128,7 @@ function sendPaymentInfos(123, 'INTDK6177', '6K5Ck6IqrSp7e3l6aswSuh4orVAdrevriIr
                       </div>
 
                       <small class="text-muted">{{ MesAnnonceEnLigne.updatedAt |format_date}}</small>
-                      <small class="alert alert-danger text-muted">Expiree le {{ MesAnnonceEnLigne.expiredAt |format_date}}</small>
+                      <small class="alert alert-danger text-muted">expirée le {{ MesAnnonceEnLigne.expiredAt |format_date}}</small>
                     </div>
                     <a href="{{ path('ImagePrincipale',{'idAnnonce':MesAnnonceEnLigne.id}) }}"><span class="badge badge-danger">Choisir une image pour votre annonce</span></a>
 
