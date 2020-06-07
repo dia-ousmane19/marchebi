@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce ind{% endblock %}
+{% block stylesheets %}
+<link href="{{ asset('css/jumbotron.css') }}" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<!-- <script src=https://touchpay.gutouch.com/touchpay/script/prod_touchpay-0.0.1.js type="text/javascript"> </script>
+<script type="text/javascript">
+function sendPaymentInfos(123, 'INTDK6177', '6K5Ck6IqrSp7e3l6aswSuh4orVAdrevriIrqbjU7YE7QXRLKBR' ,'https://127.0.0.1:8004/', 'https://127.0.0.1:8004/annonces/new' ,'https://127.0.0.1:8004/mon-compte' ,1000 , 'Dakar' , 'ousmane19@gmail.com', 'dia', 'dieumb', '771237657') {}
+</script> -->
+{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="jumbotron border border-primary rounded ">
+    <h1 class="display-4">Oups!!!</h1>
+    <p class="lead">Aucune annonce n'est disponible pour cette categorie.</p>
+    <hr class="my-4">
+    <p>Veuillez faire vos annonces jusqu'a 10 gratuitement.</p>
+    <a class="btn btn-primary btn-lg" href="{{ path('user_account')}}" role="button">Publier vos annonces</a>
+  </div>
+</div>
+
+
+
+{% endblock %}

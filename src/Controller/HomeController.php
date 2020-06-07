@@ -53,8 +53,10 @@ class HomeController extends AbstractController
        $request->query->getInt('page', 1), /*page number*/
        6 /*limit per page*/
    );
-    if (!$annonces) {
-      throw $this->createNotFoundException('Aucune annonce disponible');
+  // dd($donnee);
+    if (!$donnee) {
+    return $this->redirectToRoute('annonce_indisponible');
+      //throw $this->createNotFoundException('Aucune annonce disponible');
     }
     // dd($annonces);
 
@@ -76,6 +78,14 @@ class HomeController extends AbstractController
       'annonceComplete' => $annonceComplete,
       'InfoUser'=>$InfoUser
     ]);
+  }
+
+  /**
+  * @Route("/aucune-annonce-disponible", name="annonce_indisponible")
+  */
+  public function AnnonceInexistante()
+  {
+    return $this->render('annonces/AnnonceInexistante.html.twig');
   }
 
 
