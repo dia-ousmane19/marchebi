@@ -9,14 +9,14 @@
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h2><span class="badge badge-primary">Vos images</span></h2>
-    <p class="">Si vous voulez changer votre image principale <span class="badge badge-danger">vous devez desactiver l'image </span> qui est en principale en cliquant sur l'image et vous decochez la case.  </p>
+    <p class="">Si vous voulez changer votre image principale <span class="badge badge-danger">vous devez désactiver l'image </span> qui est en principale en cliquant sur l'image et vous décochez la case.  </p>
     <a class="btn btn-sm btn-primary"href="#IP">Voir mon image principale</a>
     <a class="btn btn-sm btn-primary"href="{{path('user_account')}}">Retour</a>
 
   </div>
 </div>
   <div class="m-2">
-    <span class="badge badge-danger">Veuillez choisir une seule image </span> definie comme image principale
+    <span class="badge badge-danger">Veuillez choisir une seule image </span> definie comme image principale.
   </div>
 
   <div class="row">
@@ -24,7 +24,7 @@
     <div class="col-xs-12 col-sm-6 col-md-3 m-1">
 <a href="{{ path('images_edit',{'id':MonImage.id})}}"><img class="img-thumbnail" src="{{ asset('uploads/images/images_annonces/')}}{{MonImage.nom}}" alt=""></a>
     </div>
-      
+
     {% endfor %}
 
   </div>
