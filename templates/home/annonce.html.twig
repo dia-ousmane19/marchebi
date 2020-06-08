@@ -48,7 +48,7 @@
         <h1 class="display-4">{{ annonceComplete.titre }}</h1>
         <small class="text-muted"><i class="fas fa-tag"></i> {{ annonceComplete.categorie}}</small>
         <p class="lead">{{ annonceComplete.description |raw }}</p>
-        <p class="text-muted"> <span class="badge badge-danger">{{ annonceComplete.updatedAt |format_datetime}}</span> </p>
+        <p class="text-muted"> <span class="badge badge-danger">Publiée le {{ annonceComplete.updatedAt |format_datetime}}</span> </p>
 
         <hr class="my-4">
         {% if annonceComplete.prix == null %}
