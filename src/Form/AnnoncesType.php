@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+
 
 class AnnoncesType extends AbstractType
 {
@@ -14,7 +16,13 @@ class AnnoncesType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('prix')
+            ->add('prix',NumberType::class,[
+              'required'=>false,
+
+              'attr' =>[
+                'placeholder'=>'Si vous ne mettez pas de prix, nous allons afficher "sur commande" (optionel)'
+              ]
+            ])
             ->add('description')
             ->add('prix_negociable')
             ->add('possibilite_echange')

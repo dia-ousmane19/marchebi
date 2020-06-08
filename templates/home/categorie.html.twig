@@ -32,20 +32,35 @@
             <div class="card mb-4 box-shadow">
               {% for MesImages in MesAnnonce.images %}
               {% if MesImages.imagePrincipale == true %}
-              <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="Card image cap">
+              <img class="d-block w-100 card-img-top img-thumbnail"  src="{{ asset('/uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="Card image cap">
               {% endif %}
               {% endfor %}
               <div class="card-body">
                 <h4><a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}">{{ MesAnnonce.titre}}</a> </h4>
-                <h4><i class='fas fa-coins'></i> {{ MesAnnonce.prix}} FCFA</h4>
+                {% if MesAnnonce.prix == null %}
+                <h4>Sur commande</h4>
+                {% else %}
+                    <h4><i class='fas fa-coins'></i> {{ MesAnnonce.prix}} FCFA</h4>
+                {% endif %}
+                <ul>
+                  {% if MesAnnonce.possibiliteEchange == 1 %}
+                  <li>Il y a une possibilité d'échange</li>
+                  {% endif %}
+                    {% if MesAnnonce.prixNegociable == 1 %}
+                  <li>Prix est négociable</li>
+                  {% endif %}
+                </ul>
                 <small class="text-muted">{{ MesAnnonce.users.nomComplet}}</small>
                 <p class="card-text">{{ MesAnnonce.description |slice(0,100) |raw}}</p>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-column">
                   <div class="btn-group">
                     <a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}" type="button" class="btn btn-sm btn-outline-primary">Voir l'annonce</a>
 
                   </div>
-                  <small class="text-muted">{{ MesAnnonce.updatedAt |format_date}}</small>
+                  <div class="">
+                    <small class="badge badge-danger">Publiée le {{ MesAnnonce.updatedAt |format_date}}</small>
+                  </div>
+
                 </div>
               </div>
             </div>

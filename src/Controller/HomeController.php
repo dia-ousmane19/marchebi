@@ -7,7 +7,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RubriqueRepository;
 use App\Entity\Rubrique;
 use Symfony\Component\HttpFoundation\Response;
-
 use App\Repository\CategorieRepository;
 use App\Repository\AnnoncesRepository;
 use Knp\Component\Pager\PaginatorInterface;
