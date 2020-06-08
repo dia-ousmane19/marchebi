@@ -5,12 +5,13 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="btn btn-sm btn-primary" href="{{ path('app_login') }}">Faites une annonces</a>
     {% if InfoUser is empty %}
-    <a class="btn btn-sm  btn-primary" href="{{ path('app_login') }}">Connexion</a>
+    <a class="btn btn-sm mt-1 btn-primary" href="{{ path('app_login') }}">Connexion</a>
+    <a class="btn btn-sm mt-1  btn-primary" href="{{ path('app_register') }}">Inscription</a>
   </nav>
   {% else %}
 
-  <a class="btn btn-sm btn-primary" href="{{ path('user_account') }}">Mon compte</a>
-  <a class="btn m-1 btn-sm btn-primary" href="{{ path('app_logout') }}">Me deconnecter</a>
+  <a class="btn btn-sm mt-1btn-primary" href="{{ path('user_account') }}">Mon compte</a>
+  <a class="btn mt-1 btn-sm btn-primary" href="{{ path('app_logout') }}">Me deconnecter</a>
 
   {% endif %}
 

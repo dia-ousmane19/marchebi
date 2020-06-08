@@ -54,13 +54,13 @@
 
 </div>
 
-
 <div class="container">
   <hr>
   <h3 class="text-center text-primary"> Voir les annonces par catégorie</h3>
   <hr>
   <div class="card-deck mb-3 text-center">
    {% for allRubrique in allRubriques %}
+
     <div class="card  mb-4 box-shadow">
       <div class="card-header bg-primary">
         <h4 class="my-0  font-weight-normal" style="color:#fff">{{allRubrique.nom}}</h4>
@@ -68,7 +68,7 @@
       <div class="card-body">
         <ul class="list-unstyled mt-3 mb-4">
           {% for categorie in allRubrique.categories %}
-              <li class="text-justify" ><a style="color:#212529" href="{{ path('categorie',{'slug':categorie.slug}) }}">{{categorie.nom}}</a></li>
+              <li class="text-justify" ><a style="color:#212529" href="{{ path('categorie',{'slug':categorie.slug}) }}">{{categorie.nom}}</a>  </li>
           {% endfor %}
 
         </ul>
