@@ -73,6 +73,7 @@ class HomeController extends AbstractController
     $annonceComplete=$annoncesRepository->FindAnnonceBySlug($slug);
     //dd($annonceComplete);
     $InfoUser=$this->getUser();
+    //dd($InfoUser);
     return $this->render('home/annonce.html.twig',[
       'annonceComplete' => $annonceComplete,
       'InfoUser'=>$InfoUser

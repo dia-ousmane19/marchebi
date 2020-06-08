@@ -2,7 +2,9 @@
 
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock %}
 {% block title %}Annonce{% endblock %}
-{% block javascripts %}<script src='https://kit.fontawesome.com/a076d05399.js'></script>{% endblock %}
+{% block javascripts %}
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+{% endblock %}
 {% block body %}
 {{ include('partials/header.html.twig') }}
 
@@ -11,6 +13,7 @@
     <div class="col-md-8 mt-1 col-sm-12">
       <div id="carouselExampleIndicators" class="carousel slide  rounded" data-ride="carousel">
         <ol class="carousel-indicators">
+
 
         {% for i in range(1,annonceComplete.images|length) %}
 
@@ -64,8 +67,12 @@
           <li>Prix est négociable</li>
           {% endif %}
         </ul>
-        <p class="text-muted"> <span class="badge badge-primary">{{ InfoUser.nomComplet}}</span> </p>
-        <a class="btn btn-primary btn-sm" href="#" role="button">Contacter l'annonceur</a>
+        <p class="text-muted"> <span class="badge badge-primary">{{ annonceComplete.users.nomComplet}}</span> </p>
+
+       <h3><span class="badge badge-success">{{ annonceComplete.users.numeroDeTel }}</span></h3>
+       <p><a class="btn btn-sm btn-primary " href="{{ path('home') }}">Retour</a> </p>
+
+
       </div>
     </div>
   </div>
