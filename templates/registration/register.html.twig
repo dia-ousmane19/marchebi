@@ -3,15 +3,62 @@
 {% block title %}Sign-up{% endblock %}
 
 {% block body %}
-<div class="d-flex fixed-top flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-  <a class="my-0 mr-md-auto mb-2" href="{{ path ('home')}}"><img  src="{{ asset('images/logo.jpg')}}" alt="" width="128" height="128"></a>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="btn btn-primary" href="{{ path('app_register') }}">Faites une annonces</a>
-    <a class="btn btn-primary" href="{{ path('app_login') }}">Connexion</a>
-  </nav>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom box-shadow">
+  <a class="navbar-brand" href="{{ path ('home')}}"><img  src="{{ asset('images/logo.jpg')}}" alt="" width="35" height="30"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div id="form_inscription">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_login') }}">faîtes une annonce</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_login') }}">Connexion</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" id="form_regi">
+      <div class="col-auto my-1">
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Catégorie</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+      <input class="form-control mr-sm-2" type="search" placeholder="Tapez des mots clés" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container" id="form_inscription">
+  <form id="form">
+  <div class="form-row">
+    <div class="col-xs-12 col-md-4 mb-1 col-sm-4">
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <option selected>Catégorie</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div class="col-xs-12 col-md-4 col-sm-4">
+    <input class="form-control mr-sm-2" type="search" placeholder="Tapez des mots clés" aria-label="Search">
+
+  </div>
+  <div class="col-xs-12 col-md-4 col-sm-4">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
+  </div>
+
+  </div>
+</form>
+
+</div>
+<div >
   <div class="container" >
     <div class="col-md-4 offset-md-4">
       <div class="text-center mb-4">
@@ -20,7 +67,6 @@
         </div>
         <h1 class="display-5 mb-3 font-weight-normal">Inscrivez-vous</h1>
       </div>
-
       {{ form_start(registrationForm) }}
       {{ form_widget(registrationForm) }}
 
@@ -35,14 +81,5 @@
   <p class="mt-5 mb-3 text-muted text-center">&copy; {{ 'now'| date('Y')}}</p>
 </div>
 </div>
-
-
-
 </div>
-
-
-
-
-
-
 {% endblock %}

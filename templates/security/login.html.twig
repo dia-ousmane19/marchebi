@@ -4,7 +4,7 @@
 
 
 {% block body %}
-<form method="post" style="margin-top:5px" class="form-signin">
+<form method="post"  class="form-signin">
   {% if error %}
   <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
   {% endif %}
@@ -15,10 +15,11 @@
   </div>
   {% endif %}
   <div class="text-center mb-4">
-    <img class="mb-4" src="{{ asset('images/logoLogin.png')}}" alt="" width="72" height="72">
+    <a href="{{ path('home')}}"><img class="mb-4" src="{{ asset('images/logoLogin.png')}}" alt="" width="72" height="72"></a>
+
     <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
     <p>Une fois que vous êtes connecté, vous aurez beaucoup plus de fonctionnalité à votre disposition.</p>
-    
+
   </div>
 
   <div class="form-label-group">
