@@ -62,6 +62,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            
             ->add('add', SubmitType::class, [
                'label' => 'Valider',
                'attr' => [

@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/loginCss.css') }}">{% endblock %}
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('css/loginCss.css') }}">{% endblock %}
 {% block title %}Se connecter{% endblock %}
 
 
@@ -30,6 +32,7 @@
   <div class="form-label-group">
     <input type="password" name="password" id="inputPassword" class="form-control" required>
     <label for="inputPassword">Mot de passe</label>
+    <a class="btn mt-1 btn-sm btn-light" id="iconShowPassword" href="#"><i class="fas fa-eye-slash"></i></a>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"  >
   </div>
 
@@ -51,5 +54,10 @@
   <!-- <p class="mt-5 mb-3 text-muted text-center"><a href="#">J'ai perdu mon mot de passe</a> </p> -->
   <p class="mt-5 mb-3 text-muted text-center">&copy; {{ 'now'| date('Y')}}</p>
 </form>
+
+{% endblock %}
+{% block javascripts %}
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
+<script type="text/javascript" src="{{asset('js/showPassword.js')}}"></script>
 
 {% endblock %}

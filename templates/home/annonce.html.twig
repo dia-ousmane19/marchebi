@@ -30,7 +30,7 @@
         <div class="carousel-inner" style="height:auto" >
           {% for MesImages in annonceComplete.images %}
           <div class="carousel-item {% if MesImages.ImagePrincipale == true %}active{% endif %} ">
-            <img class="d-block w-100 img-thumbnail"  src="{{ asset('uploads/images/images_annonces/') }}{{MesImages.nom}}" alt="First slide">
+            <img class="d-block w-100 img-thumbnail"  src="{{MesImages.nom}}" alt="First slide">
           </div>
           {% endfor %}
 
