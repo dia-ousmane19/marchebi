@@ -22,13 +22,13 @@
     </ul>
     <form class="form-inline my-2 my-lg-0" id="form_regi">
       <div class="col-auto my-1">
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Catégorie</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected>Catégorie</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
       <input class="form-control mr-sm-2" type="search" placeholder="Tapez des mots clés" aria-label="Search">
       <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
     </form>
@@ -37,25 +37,25 @@
 
 <div class="container" id="form_inscription">
   <form id="form">
-  <div class="form-row">
-    <div class="col-xs-12 col-md-4 mb-1 col-sm-4">
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-      <option selected>Catégorie</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>
-  <div class="col-xs-12 col-md-4 col-sm-4">
-    <input class="form-control mr-sm-2" type="search" placeholder="Tapez des mots clés" aria-label="Search">
+    <div class="form-row">
+      <div class="col-xs-12 col-md-4 mb-1 col-sm-4">
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected>Catégorie</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="col-xs-12 col-md-4 col-sm-4">
+        <input class="form-control mr-sm-2" type="search" placeholder="Tapez des mots clés" aria-label="Search">
 
-  </div>
-  <div class="col-xs-12 col-md-4 col-sm-4">
-    <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
-  </div>
+      </div>
+      <div class="col-xs-12 col-md-4 col-sm-4">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
+      </div>
 
-  </div>
-</form>
+    </div>
+  </form>
 
 </div>
 <div >
@@ -67,17 +67,44 @@
         </div>
         <h1 class="display-5 mb-3 font-weight-normal">Inscrivez-vous</h1>
       </div>
-      {{ form_start(registrationForm) }}
-      {{ form_widget(registrationForm) }}
+
       <!-- <div class="checkbox mb-3">
       <label>
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div> -->
+  <!-- start -->
+ <form name="registration_form" method="post">
+  <div id="registration_form">
+    <div class="form-group">
+      <input type="email" id="registration_form_email" name="registration_form[email]" class="form-control form-control" placeholder="Adresse email (optionel)" />
+    </div>
+    <div class="form-group">
+      <input type="text" id="registration_form_NumeroDeTel" name="registration_form[NumeroDeTel]" required="required" class="form-control form-control" placeholder="Numéro de téléphone" />
+    </div>
+    <div class="form-group">
+      <input type="text" id="registration_form_NomComplet" name="registration_form[NomComplet]" required="required" class="form-control form-control" placeholder="Votre nom complet" />
+    </div>
+    <div class="form-group">
+      <input type="password" id="registration_form_Password" name="registration_form[Password]" required="required" placeholder="Votre mot de passe" class="form-control" />
+      <a class="btn mt-1 btn-sm btn-light" id="iconShowPasswordInscription" href="#"><i class="fas fa-eye-slash"></i></a>
+    </div>
+    <div class="form-group">
+      <button type="submit" id="registration_form_add" name="registration_form[add]" class="btn waves-effect btn-primary waves-light btn">Valider</button>
+    </div>
+    <input type="hidden" id="registration_form__token" name="registration_form[_token]" value="NnP6KHckjdokPgjWTe-c4j9wdm7AYtLJH6VFgFhAqzM" />
+  </div>
+</form>
 
-  {{ form_end(registrationForm) }}
+  <!-- end -->
+
   <p class="mt-5 mb-3 text-muted text-center">&copy; {{ 'now'| date('Y')}}</p>
 </div>
 </div>
 </div>
+{% endblock %}
+{% block javascripts %}
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
+<script type="text/javascript" src="{{asset('js/showPassword.js')}}"></script>
+
 {% endblock %}
