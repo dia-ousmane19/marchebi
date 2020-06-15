@@ -47,12 +47,7 @@ class AnnoncesController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-          // $users=$this->getUser();
-          // $idUsers=$users->getID();
-          // dd($users->getID());
-          // $user= new Users();
-          // $annonce->setusers($idUsers);
-        //  dd($annonce->setUsers($idUsers));
+          
            // on gere l'image ici
 
            $images=$form->get('images')->getData();
