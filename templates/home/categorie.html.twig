@@ -9,11 +9,14 @@
 {{ include('partials/header.html.twig') }}
 
 
+
+
+
 <div class="container" id="index">
 
 
-  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">{{ annonces[0].categorie.nom}}</h1>
+  <div class="pricing-header  pt-md-5 pb-md-4 mx-auto text-center">
+
     <p class="lead">Faites-vous plaisir en profitant de ces annonces.</p>
   </div>
   <div class="">
@@ -26,39 +29,37 @@
           {{ knp_pagination_render(annonces) }}
         </div>
         <div class="row">
-          {% for MesAnnonce in annonces %}
+          {% for annonce in annonces %}
+          {% for MonAnnonce in annonce %}
 
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              {% for MesImages in MesAnnonce.images %}
-              {% if MesImages.imagePrincipale == true %}
-              <img class="d-block w-100 card-img-top img-thumbnail"  src="{{MesImages.nom}}" alt="Card image cap">
-              {% endif %}
-              {% endfor %}
+              <img class="d-block w-100 card-img-top img-thumbnail"  src="{{MonAnnonce.nom}}" alt="Card image cap">
+
               <div class="card-body">
-                <h4><a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}">{{ MesAnnonce.titre}}</a> </h4>
-                {% if MesAnnonce.prix == null %}
+                <h4><a href="{{ path('annonce',{'slug':MonAnnonce.annonces.slug}) }}">{{ MonAnnonce.annonces.titre}}</a> </h4>
+                {% if MonAnnonce.annonces.prix == null %}
                 <h4>Sur commande</h4>
                 {% else %}
-                    <h4><i class='fas fa-coins'></i> {{ MesAnnonce.prix}} FCFA</h4>
+                <h4><i class='fas fa-coins'></i> {{ MonAnnonce.annonces.prix}} FCFA</h4>
                 {% endif %}
                 <ul>
-                  {% if MesAnnonce.possibiliteEchange == 1 %}
+                  {% if MonAnnonce.annonces.possibiliteEchange == 1 %}
                   <li>Il y a une possibilité d'échange</li>
                   {% endif %}
-                    {% if MesAnnonce.prixNegociable == 1 %}
+                  {% if MonAnnonce.annonces.prixNegociable == 1 %}
                   <li>Prix est négociable</li>
                   {% endif %}
                 </ul>
-                <small class="text-muted">{{ MesAnnonce.users.nomComplet}}</small>
-                <p class="card-text">{{ MesAnnonce.description |slice(0,100) |raw}}</p>
+                <small class="text-muted">{{ MonAnnonce.annonces.users.nomComplet}}</small>
+                <p class="card-text">{{ MonAnnonce.annonces.description |slice(0,100) |raw}}</p>
                 <div class="d-flex flex-column">
                   <div class="btn-group">
-                    <a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}"  class="btn btn-sm btn-primary">Voir l'annonce</a>
+                    <a href="{{ path('annonce',{'slug':MonAnnonce.annonces.slug}) }}"  class="btn btn-sm btn-primary">Voir l'annonce</a>
 
                   </div>
                   <div class="">
-                    <small class="badge badge-danger">Publiée le {{ MesAnnonce.updatedAt |format_date}}</small>
+                    <small class="badge badge-danger">Publiée le {{ MonAnnonce.annonces.updatedAt |format_date}}</small>
                   </div>
 
                 </div>
@@ -66,10 +67,7 @@
             </div>
           </div>
 
-          {% else %}
-          <div class="alert alert-warning">
-            Il y n'a pas encore de {{annonces.nom}}
-          </div>
+          {% endfor %}
 
           {% endfor %}
 
@@ -81,6 +79,7 @@
       </div>
     </div>
   </main>
+
 
 
   {{ include('partials/footer.html.twig') }}

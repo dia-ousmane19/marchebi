@@ -34,6 +34,24 @@ class ImagesRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    /**
+
+     * on recupere les images principale
+     * @return Images[] Returns an array of Images objects
+     */
+
+    public function findByImagePrincipale($IDAnnonce): array
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.annonces = :val')
+            ->setParameter('val', $IDAnnonce)
+            // ->orderBy('i.id', 'ASC')
+             ->setMaxResults(1)
+          //  ->setFirstResult(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 
     /*

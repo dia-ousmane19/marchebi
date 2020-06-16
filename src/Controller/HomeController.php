@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RubriqueRepository;
+use App\Repository\ImagesRepository;
 use App\Entity\Rubrique;
 use Symfony\Component\HttpFoundation\Response;
 use App\Repository\CategorieRepository;
@@ -38,26 +39,36 @@ class HomeController extends AbstractController
   *
   * @Route("/categorie/{slug}", name="categorie")
   */
-  public function AllAnnoncesByCategorie(PaginatorInterface $paginator,Request $request,AnnoncesRepository $annoncesRepository,  $slug)
+  public function AllAnnoncesByCategorie(PaginatorInterface $paginator,Request $request,AnnoncesRepository $annoncesRepository,ImagesRepository $imagesRpo,  $slug)
   {
     $InfoUser=$this->getUser();
-    //$annonces=$categorieRepository->findAnnonceBySlug($slug);
-    //dd($annonces);
 
-     //dd($annonces);
 
    $donnee=$annoncesRepository->findAllAnnoncesByCategorie($slug);
-   $annonces = $paginator->paginate(
-       $donnee, /* query NOT result */
-       $request->query->getInt('page', 1), /*page number*/
-       6 /*limit per page*/
-   );
-  // dd($donnee);
-    if (!$donnee) {
+
+   $array=[];
+   foreach ($donnee as  $value) {
+     $array[]=$value->getID();
+   }
+   $imagesPrincipale=[];
+  //dd($array);
+  foreach ($array as  $valu) {
+    $imagesPrincipale[]=$imagesRpo->findByImagePrincipale($valu);
+
+  }
+
+//dd();
+$annonces = $paginator->paginate(
+    $imagesPrincipale, /* query NOT result */
+    $request->query->getInt('page', 1), /*page number*/
+    6 /*limit per page*/
+);
+
+    if (!$imagesPrincipale) {
     return $this->redirectToRoute('annonce_indisponible');
       //throw $this->createNotFoundException('Aucune annonce disponible');
     }
-    // dd($annonces);
+
 
     return $this->render('home/categorie.html.twig',[
       'annonces' => $annonces,
@@ -68,15 +79,21 @@ class HomeController extends AbstractController
   /**
   * @Route("/a/{slug}", name="annonce")
   */
-  public function getAnnonceComplet(AnnoncesRepository $annoncesRepository,$slug)
+  public function getAnnonceComplet(AnnoncesRepository $annoncesRepository,ImagesRepository $imagesRpo,$slug)
   {
+
     $annonceComplete=$annoncesRepository->FindAnnonceBySlug($slug);
+    
+    $ImagesAnnonce=$imagesRpo->findByImagePrincipale($annonceComplete->getId());
+  //  dd($ImagesAnnonce);
+
     //dd($annonceComplete);
     $InfoUser=$this->getUser();
     //dd($InfoUser);
     return $this->render('home/annonce.html.twig',[
       'annonceComplete' => $annonceComplete,
-      'InfoUser'=>$InfoUser
+      'InfoUser'=>$InfoUser,
+      'ImageActive'=>$ImagesAnnonce
     ]);
   }
 

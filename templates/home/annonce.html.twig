@@ -8,16 +8,16 @@
 {% block body %}
 {{ include('partials/header.html.twig') }}
 
-<div class="container-fluid" style="margin-top:250px">
+
+<div class="container-fluid" style="margin-top:63px">
   <div class="row">
     <div class="col-md-8 mt-1 col-sm-12">
       <div id="carouselExampleIndicators" class="carousel slide  rounded" data-ride="carousel">
         <ol class="carousel-indicators">
-
-
+           <li data-target="#carouselExampleIndicators"  data-slide-to="0" class="active"> </li>
         {% for i in range(1,annonceComplete.images|length) %}
 
-          <li data-target="#carouselExampleIndicators" data-slide-to="{{i}}" > </li>
+          <li data-target="#carouselExampleIndicators"  data-slide-to="{{i}}" > </li>
 
             {% endfor %}
           <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -28,9 +28,14 @@
 
         </ol>
         <div class="carousel-inner" style="height:auto" >
+          {% for ImageActiveAnnonce in ImageActive %}
+          <div class="carousel-item active">
+            <img class="d-block w-100 img-thumbnail"   src="{{ImageActiveAnnonce.nom}}" alt="{{ImageActiveAnnonce.nom}}">
+          </div>
+          {% endfor %}
           {% for MesImages in annonceComplete.images %}
-          <div class="carousel-item {% if MesImages.ImagePrincipale == true %}active{% endif %} ">
-            <img class="d-block w-100 img-thumbnail"  src="{{MesImages.nom}}" alt="First slide">
+          <div class="carousel-item ">
+            <img class="d-block w-100 img-thumbnail"  src="{{MesImages.nom}}" alt="{{MesImages.nom}}">
           </div>
           {% endfor %}
 
