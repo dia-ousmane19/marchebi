@@ -34,7 +34,7 @@
 
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="d-block w-100 card-img-top img-thumbnail"  src="{{MonAnnonce.nom}}" alt="Card image cap">
+              <img class="d-block w-100 card-img-top img-thumbnail"  src="{{asset('uploads/images/images_annonces/')}}{{MonAnnonce.nom}}" alt="Card image cap">
 
               <div class="card-body">
                 <h4><a href="{{ path('annonce',{'slug':MonAnnonce.annonces.slug}) }}">{{ MonAnnonce.annonces.titre}}</a> </h4>

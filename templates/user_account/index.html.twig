@@ -94,10 +94,8 @@
                   <div class="card mb-4 box-shadow">
                     {% for MesImages in MesAnnonce.images %}
 
-                    {% if MesImages.imagePrincipale == true %}
                     <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="Card image cap">
 
-                    {% endif %}
                     {% endfor %}
                     <div class="card-body">
                       <h4><a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}">{{ MesAnnonce.titre}}</a> </h4>
@@ -114,7 +112,7 @@
                         <small class="alert alert-danger text-muted">expirée le {{ MesAnnonce.expiredAt |format_date}}</small>
 
                       </div>
-                      <small class="text-muted"> <a href="{{ path('ImagePrincipale',{'slug':MesAnnonce.id}) }}">Veuillez choisir une principal</a> </small>
+                      
                     </div>
                   </div>
                 </div>
@@ -148,15 +146,9 @@
             <div class="row">
               {% for MesAnnonceEnLigne in usersEnLigne %}
               <div class="col-md-4">
-
                 <div class="card mb-4 box-shadow">
                   {% for MesImages in MesAnnonceEnLigne.images %}
-
-                  {% if MesImages.imagePrincipale == true %}
                   <a href="{{ path('ImagePrincipale',{'idAnnonce':MesAnnonceEnLigne.id}) }}"><img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="Card image cap"></a>
-
-
-                  {% endif %}
                   {% endfor %}
                   <div class="card-body">
                     <h4><a href="{{ path('annonce',{'slug':MesAnnonceEnLigne.slug}) }}">{{ MesAnnonceEnLigne.titre}}</a> </h4>
@@ -171,7 +163,7 @@
                       <small class="text-muted">{{ MesAnnonceEnLigne.updatedAt |format_date}}</small>
                       <small class="alert alert-danger text-muted">expirée le {{ MesAnnonceEnLigne.expiredAt |format_date}}</small>
                     </div>
-                    <a href="{{ path('ImagePrincipale',{'idAnnonce':MesAnnonceEnLigne.id}) }}"><span class="badge badge-danger">Choisir une image pour votre annonce</span></a>
+
 
                   </div>
                 </div>

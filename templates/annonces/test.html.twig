@@ -1,1 +1,5 @@
-cava
+
+{% for nomImage in output %}
+<img class="img-thumbnail" height="100" width="100" src="{{asset('uploads/images/images_annonces/')}}{{nomImage}}" alt="">
+
+{% endfor %}

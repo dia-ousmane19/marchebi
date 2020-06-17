@@ -36,10 +36,7 @@ class Images
     private $imageFile;
 
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $image_principale = false;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="images")
@@ -80,17 +77,7 @@ class Images
         return $this;
     }
 
-    public function getImagePrincipale(): ?bool
-    {
-        return $this->image_principale;
-    }
-
-    public function setImagePrincipale(bool $image_principale): self
-    {
-        $this->image_principale = $image_principale;
-
-        return $this;
-    }
+  
 
     public function getAnnonces(): ?Annonces
     {

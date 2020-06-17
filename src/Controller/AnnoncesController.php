@@ -15,152 +15,147 @@ use App\Entity\Users;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
- * @Route("/annonces")
- */
+* @Route("/annonces")
+*/
 class AnnoncesController extends AbstractController
 {
-    // /**
-    //  * @Route("/", name="annonces_index", methods={"GET"})
-    //  */
-    // public function index(AnnoncesRepository $annoncesRepository): Response
-    // {
-    //     return $this->render('annonces/index.html.twig', [
-    //         'annonces' => $annoncesRepository->findAll(),
-    //
-    //     ]);
+  // /**
+  //  * @Route("/", name="annonces_index", methods={"GET"})
+  //  */
+  // public function index(AnnoncesRepository $annoncesRepository): Response
+  // {
+  //     return $this->render('annonces/index.html.twig', [
+  //         'annonces' => $annoncesRepository->findAll(),
+  //
+  //     ]);
+  // }
+
+  /**
+  * @Route("/new", name="annonces_new", methods={"GET","POST"})
+  */
+  public function new(AnnoncesRepository $annoncesRepository, Request $request): Response
+  {
+    $output=[];
+    $annonce = new Annonces();
+    $form = $this->createForm(AnnoncesType::class, $annonce);
+    $form->handleRequest($request);
+    $InfoUser=$this->getUser();
+    $totalAnn=$annoncesRepository->TotalAnnonce($InfoUser->getId());
+    // if ($totalAnn[1] >= 10) {
+    //   return $this->redirectToRoute('user_account');
     // }
 
-    /**
-     * @Route("/new", name="annonces_new", methods={"GET","POST"})
-     */
-    public function new(AnnoncesRepository $annoncesRepository, Request $request): Response
-    {
-        $annonce = new Annonces();
-        $form = $this->createForm(AnnoncesType::class, $annonce);
-        $form->handleRequest($request);
-        $InfoUser=$this->getUser();
-        $totalAnn=$annoncesRepository->TotalAnnonce($InfoUser->getId());
-        // if ($totalAnn[1] >= 10) {
-        //   return $this->redirectToRoute('user_account');
-        // }
-
-      //dd($InfoUser->getId());
+    //dd($InfoUser->getId());
     //  $images=$request->files->get('annonces');
     //  dd($images);
 
 
-        if ($form->isSubmitted() && $form->isValid()) {
+    if ($form->isSubmitted() && $form->isValid()) {
 
-           // on gere l'image ici
+      // on gere l'image ici
 
-           $images=$form->get('images')->getData();
-           dd($images);
+      $images=$form->get('images')->getData();
+      //dd($images);
 
-          //
-          foreach ($images as  $image) {
+      //
+      foreach ($images as  $image) {
+        $extension=['jpg','jpeg','png'];
+        $getExtension=$image->guessExtension();
+        if (in_array($getExtension,$extension)) {
+
           $fichier=md5(uniqid()).'.'.$image->guessExtension();
+
           try {
-               $image->move(
-                   $this->getParameter('chemin_image'),
-                   $fichier
-               );
+            $image->move(
+              $this->getParameter('chemin_image'),
+              $fichier
+            );
+            $output[]= $fichier;
 
-               $img= new Images();
-               $img->setNom($fichier);
-               $annonce->addImage($img);
-           }catch (FileException $e) {
-               throw $this->createNotFoundException('Erreur dans le chargement du fichier');
-           }
+            $img= new Images();
+            $img->setNom($fichier);
+            $annonce->addImage($img);
 
-
+          }catch (FileException $e) {
+            throw $this->createNotFoundException('Erreur dans le chargement du fichier');
           }
-
-            $user=$this->getDoctrine()->getRepository(Users::class)->find($this->getUser()->getID());
-
-            $annonce->setUsers($user);
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($annonce);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_account');
+        }else {
+          echo "<div class='alert alert-danger'>Nous acceptons uniquement 'jpg','jpeg','png'</div>";
+          die();
         }
 
-        return $this->render('annonces/new.html.twig', [
-            'annonce' => $annonce,
-            'form' => $form->createView(),
-            'InfoUser'=>$InfoUser,
 
-        ]);
+      }
+
+
+
+      $user=$this->getDoctrine()->getRepository(Users::class)->find($this->getUser()->getID());
+
+      $annonce->setUsers($user);
+
+      $entityManager = $this->getDoctrine()->getManager();
+      $entityManager->persist($annonce);
+      $entityManager->flush();
+
+      return $this->render('annonces/test.html.twig', [
+        'output' => $output,
+      ]);
+      die();
+
+      //return $this->redirectToRoute('user_account');
     }
 
-    // /**
-    //  * @Route("/{id}", name="annonces_show", methods={"GET"})
-    //  */
-    // public function show(Annonces $annonce): Response
-    // {
-    //     return $this->render('annonces/show.html.twig', [
-    //         'annonce' => $annonce,
-    //     ]);
-    // }
+    return $this->render('annonces/new.html.twig', [
+      'annonce' => $annonce,
+      'form' => $form->createView(),
+      'InfoUser'=>$InfoUser,
 
-    // /**
-    //  * @Route("/{id}/edit", name="annonces_edit", methods={"GET","POST"})
-    //  */
-    // public function edit(Request $request, Annonces $annonce): Response
-    // {
-    //     $form = $this->createForm(AnnoncesType::class, $annonce);
-    //     $form->handleRequest($request);
-    //
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $this->getDoctrine()->getManager()->flush();
-    //
-    //         return $this->redirectToRoute('annonces_index');
-    //     }
-    //
-    //     return $this->render('annonces/edit.html.twig', [
-    //         'annonce' => $annonce,
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
+    ]);
+  }
 
-    // /**
-    //  * @Route("/{id}", name="annonces_delete", methods={"DELETE"})
-    //  */
-    // public function delete(Request $request, Annonces $annonce): Response
-    // {
-    //     if ($this->isCsrfTokenValid('delete'.$annonce->getId(), $request->request->get('_token'))) {
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->remove($annonce);
-    //         $entityManager->flush();
-    //     }
-    //
-    //     return $this->redirectToRoute('annonces_index');
-    // }
+  // /**
+  //  * @Route("/{id}", name="annonces_show", methods={"GET"})
+  //  */
+  // public function show(Annonces $annonce): Response
+  // {
+  //     return $this->render('annonces/show.html.twig', [
+  //         'annonce' => $annonce,
+  //     ]);
+  // }
 
-    /**
-     * @Route("/upload", name="annonces_upload", methods={"GET","POST"})
-     */
-    public function FunctionName(Request $request)
-    {
+  // /**
+  //  * @Route("/{id}/edit", name="annonces_edit", methods={"GET","POST"})
+  //  */
+  // public function edit(Request $request, Annonces $annonce): Response
+  // {
+  //     $form = $this->createForm(AnnoncesType::class, $annonce);
+  //     $form->handleRequest($request);
+  //
+  //     if ($form->isSubmitted() && $form->isValid()) {
+  //         $this->getDoctrine()->getManager()->flush();
+  //
+  //         return $this->redirectToRoute('annonces_index');
+  //     }
+  //
+  //     return $this->render('annonces/edit.html.twig', [
+  //         'annonce' => $annonce,
+  //         'form' => $form->createView(),
+  //     ]);
+  // }
 
-      $resul=[];
-      $donnee=$request->files->get('annonces');
+  // /**
+  //  * @Route("/{id}", name="annonces_delete", methods={"DELETE"})
+  //  */
+  // public function delete(Request $request, Annonces $annonce): Response
+  // {
+  //     if ($this->isCsrfTokenValid('delete'.$annonce->getId(), $request->request->get('_token'))) {
+  //         $entityManager = $this->getDoctrine()->getManager();
+  //         $entityManager->remove($annonce);
+  //         $entityManager->flush();
+  //     }
+  //
+  //     return $this->redirectToRoute('annonces_index');
+  // }
 
-      // foreach ($donnee as $value) {
-      //   foreach ($value as $valu) {
-      //     dd($valu);
-      //     $resul[]=$valu;
-      //   }
-      //
-      // }
-      dd($donnee);
-
-       $status = array('status' => "success","fileUploaded" => false);
-      // return $this->render('annonces/test.html.twig',[
-      //   'result'=>$resul
-      // ]);
-
-      return new JsonResponse($status);
-    }
+  
 }

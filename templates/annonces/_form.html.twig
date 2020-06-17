@@ -1,4 +1,5 @@
-{{ form_start(form,{'attr':{'id':'form'}})}}
+{{ form_start(form,{'attr':{'id':'form'}}) }}
+
 <div id="categorie">
   {{ form_row(form.categorie) }}
 </div>
@@ -34,12 +35,11 @@
 <div class="mb-1" id="button_image">
   <small class="text-muted">Mes images</small>
   <div class="m-2" id="resultat">  </div>
+  <div class="m-2" id="loader"><img src="{{asset("/ajax_loader.gif")}}"></div>
     <button type="button" class="btn btn-sm btn-primary" id="button_add_image">{{ form_label(form.images,'Ajouter des images') }}</button>
   <div id="image" class="d-none" >
-    {{form_row(form.images) }}
+    {{ form_row(form.images) }}
   </div>
 </div>
-<input type="hidden" id="annonces__token" name="annonces[_token]" value="__5lfECVtQjvFBJtstiPkHjZIDJlW9QKj3fhl1mEqME" />
-
-<button class="btn btn-sm btn-primary" id="button_valider">{{ button_label|default('Valider') }}</button>
-</form>
+<button class="btn btn-sm btn-primary" type="button" id="button_valider">{{ button_label|default('Valider') }}</button>
+{{ form_end(form) }}
