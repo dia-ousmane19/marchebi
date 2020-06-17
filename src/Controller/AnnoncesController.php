@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/annonces")
@@ -39,18 +40,21 @@ class AnnoncesController extends AbstractController
         $form->handleRequest($request);
         $InfoUser=$this->getUser();
         $totalAnn=$annoncesRepository->TotalAnnonce($InfoUser->getId());
-        if ($totalAnn[1] >= 10) {
-          return $this->redirectToRoute('user_account');
-        }
+        // if ($totalAnn[1] >= 10) {
+        //   return $this->redirectToRoute('user_account');
+        // }
 
       //dd($InfoUser->getId());
+    //  $images=$request->files->get('annonces');
+    //  dd($images);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-          
+
            // on gere l'image ici
 
            $images=$form->get('images')->getData();
+           dd($images);
 
           //
           foreach ($images as  $image) {
@@ -60,6 +64,7 @@ class AnnoncesController extends AbstractController
                    $this->getParameter('chemin_image'),
                    $fichier
                );
+
                $img= new Images();
                $img->setNom($fichier);
                $annonce->addImage($img);
@@ -132,4 +137,30 @@ class AnnoncesController extends AbstractController
     //
     //     return $this->redirectToRoute('annonces_index');
     // }
+
+    /**
+     * @Route("/upload", name="annonces_upload", methods={"GET","POST"})
+     */
+    public function FunctionName(Request $request)
+    {
+
+      $resul=[];
+      $donnee=$request->files->get('annonces');
+
+      // foreach ($donnee as $value) {
+      //   foreach ($value as $valu) {
+      //     dd($valu);
+      //     $resul[]=$valu;
+      //   }
+      //
+      // }
+      dd($donnee);
+
+       $status = array('status' => "success","fileUploaded" => false);
+      // return $this->render('annonces/test.html.twig',[
+      //   'result'=>$resul
+      // ]);
+
+      return new JsonResponse($status);
+    }
 }

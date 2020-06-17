@@ -29,10 +29,11 @@ class AnnoncesType extends AbstractType
             //->add('users')
             ->add('categorie')
             ->add('images',FileType::class,[
-                'label'=> 'Veuillez choisir une ou plusieurs images ',
+                'label'=> false,
                 'mapped'=>false,
                 'multiple'=> true,
-                'required' =>true
+                'required' =>true,
+
               ])
             ->add('etat')
             ->add('region')

@@ -1,5 +1,45 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    
-    <button class="btn btn-sm btn-primary">{{ button_label|default('Valider') }}</button>
-{{ form_end(form) }}
+{{ form_start(form,{'attr':{'id':'form'}})}}
+<div id="categorie">
+  {{ form_row(form.categorie) }}
+</div>
+<div id="titre">
+  {{ form_row(form.titre) }}
+</div>
+<div id="prix">
+  {{ form_row(form.prix) }}
+</div>
+<div id="description">
+  {{ form_row(form.description) }}
+</div>
+<div id="prix_negociable">
+  {{ form_row(form.prix_negociable) }}
+</div>
+<div id="possibilite_echange">
+  {{ form_row(form.possibilite_echange) }}
+</div>
+
+<div id="etat">
+  {{ form_row(form.etat) }}
+</div>
+<div id="region">
+  {{ form_row(form.region) }}
+</div>
+<div id="quartier">
+  {{ form_row(form.quartier) }}
+</div>
+<div id="zone">
+  {{ form_row(form.zone) }}
+</div>
+<button class="btn btn-sm btn-primary" id="button_suivant" type="button" >Suivant</button>
+<div class="mb-1" id="button_image">
+  <small class="text-muted">Mes images</small>
+  <div class="m-2" id="resultat">  </div>
+    <button type="button" class="btn btn-sm btn-primary" id="button_add_image">{{ form_label(form.images,'Ajouter des images') }}</button>
+  <div id="image" class="d-none" >
+    {{form_row(form.images) }}
+  </div>
+</div>
+<input type="hidden" id="annonces__token" name="annonces[_token]" value="__5lfECVtQjvFBJtstiPkHjZIDJlW9QKj3fhl1mEqME" />
+
+<button class="btn btn-sm btn-primary" id="button_valider">{{ button_label|default('Valider') }}</button>
+</form>

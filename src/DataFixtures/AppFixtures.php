@@ -49,7 +49,7 @@ class AppFixtures extends Fixture
     }
     // fin Etat
     //Quartier
-    for ($i=0; $i < 100 ; $i++) {
+    for ($i=0; $i < 4 ; $i++) {
       $quartier=new Quartier();
       $quartier->setNom($faker->streetName);
       $manager->persist($quartier);
@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
     //fin Quartier
     //Region
 
-    for ($i=0; $i < 100 ; $i++) {
+    for ($i=0; $i < 4 ; $i++) {
       $region=new Region();
       $region->setNom($faker->city);
       $manager->persist($region);
@@ -66,7 +66,7 @@ class AppFixtures extends Fixture
     }
     //fin region
     //zone
-    for ($i=0; $i < 100 ; $i++) {
+    for ($i=0; $i < 4 ; $i++) {
       $zone =new Zone();
       $zone->setNom($faker->state);
       $manager->persist($zone);
@@ -74,7 +74,7 @@ class AppFixtures extends Fixture
     }
     // fin zone
     //rubrique
-    for ($i=0; $i < 20 ; $i++) {
+    for ($i=0; $i < 4 ; $i++) {
       $rubrique=new Rubrique();
       $rubrique->setNom($faker->word);
       $manager->persist($rubrique);
@@ -82,7 +82,7 @@ class AppFixtures extends Fixture
     }
     // fin rubrique
     //categorie
-    for ($i=0; $i < 100 ; $i++) {
+    for ($i=0; $i < 4 ; $i++) {
       $categori=new Categorie();
       $categori->setNom($faker->word)
       ->setNom($faker->sentence(2,true))
@@ -118,7 +118,7 @@ class AppFixtures extends Fixture
     }
     //fin user
     //annonces
-    for ($i=0; $i < 400 ; $i++) {
+    for ($i=0; $i < 20 ; $i++) {
       $annonce=new Annonces();
       $annonce->setTitre($faker->sentence(4,true))
       ->setPrix($faker->randomNumber(NULL,false))
@@ -141,7 +141,7 @@ class AppFixtures extends Fixture
     //fin annonce
     //images
 
-    for ($i=0; $i < 800 ; $i++) {
+    for ($i=0; $i < 20 ; $i++) {
       $image = new Images();
       $image->setNom($faker->imageUrl(640,480,'sports'))
       ->setNom($faker->imageUrl(640,480,'people'))
