@@ -89,30 +89,30 @@
 
               <div class="row">
                 {% for MesAnnonce in users %}
+                {% for AnnonceExp in MesAnnonce %}
+
+
                 <div class="col-md-4">
 
                   <div class="card mb-4 box-shadow">
-                    {% for MesImages in MesAnnonce.images %}
+                    <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{AnnonceExp.nom}}" alt="Card image cap">
 
-                    <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="Card image cap">
-
-                    {% endfor %}
                     <div class="card-body">
-                      <h4><a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}">{{ MesAnnonce.titre}}</a> </h4>
-                      <h4><i class='fas fa-coins'></i> {{ MesAnnonce.prix}} FCFA</h4>
+                      <h4><a href="{{ path('annonce',{'slug':AnnonceExp.annonces.slug}) }}">{{ AnnonceExp.annonces.titre}}</a> </h4>
+                      <h4><i class='fas fa-coins'></i> {{ AnnonceExp.annonces.prix}} FCFA</h4>
 
-                      <small class="text-muted">{{ MesAnnonce.users.nomComplet}}</small>
-                      <p class="card-text">{{ MesAnnonce.description |slice(0,100) |raw}}</p>
+                      <small class="text-muted">{{ AnnonceExp.annonces.users.nomComplet}}</small>
+                      <p class="card-text">{{ AnnonceExp.annonces.description |slice(0,100) |raw}}</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <a href="{{ path('annonce',{'slug':MesAnnonce.slug}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+                          <a href="{{ path('annonce',{'slug':AnnonceExp.annonces.slug}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
 
                         </div>
-                        <small class="text-muted">{{ MesAnnonce.updatedAt |format_date}}</small>
-                        <small class="alert alert-danger text-muted">expirée le {{ MesAnnonce.expiredAt |format_date}}</small>
+                        <small class="text-muted">{{ AnnonceExp.annonces.updatedAt |format_date}}</small>
+                        <small class="alert alert-danger text-muted">expirée le {{ AnnonceExp.annonces.expiredAt |format_date}}</small>
 
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -121,13 +121,14 @@
                   Il y n'a pas encore d'annonce expirée
                 </div>
                 {% endfor %}
+                {% endfor %}
 
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="tab-pane fade " id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div class="jumbotron jumbotron-fluid border border-primary rounded">
           <div class="container">
             <h2 class=""><span class="badge badge-primary">{{user.nomComplet}}</span></h2>
@@ -137,41 +138,44 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="AnnonceEnligne" role="tabpanel" aria-labelledby="Annonce-En-ligne-tab">
+      <div class="tab-pane fade show active" id="AnnonceEnligne" role="tabpanel" aria-labelledby="Annonce-En-ligne-tab">
         <!-- debu annonce en ligne -->
         <h2> <span class="badge badge-primary">Mes annonces en ligne</span> </h2>
         <div class="album py-5 bg-light">
           <div class="container">
-
+             <a class="btn btn-sm btn-primary mb-1" href="{{ path('annonces_new')}}">Publier une annonce</a>
             <div class="row">
               {% for MesAnnonceEnLigne in usersEnLigne %}
+              {% for Annonce in MesAnnonceEnLigne %}
               <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  {% for MesImages in MesAnnonceEnLigne.images %}
-                  <a href="{{ path('ImagePrincipale',{'idAnnonce':MesAnnonceEnLigne.id}) }}"><img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="Card image cap"></a>
-                  {% endfor %}
-                  <div class="card-body">
-                    <h4><a href="{{ path('annonce',{'slug':MesAnnonceEnLigne.slug}) }}">{{ MesAnnonceEnLigne.titre}}</a> </h4>
-                    <h4><i class='fas fa-coins'></i> {{ MesAnnonceEnLigne.prix}} FCFA</h4>
+                  <div class="card mb-4 box-shadow">
 
-                    <small class="text-muted">{{ MesAnnonceEnLigne.users.nomComplet}}</small>
-                    <p class="card-text">{{ MesAnnonceEnLigne.description |slice(0,100) |raw}}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <a href="{{ path('annonce',{'slug':MesAnnonceEnLigne.slug}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+                    <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{Annonce.nom}}" alt="Card image cap"></a>
+
+                    <div class="card-body">
+                      <h4><a href="{{ path('annonce',{'slug':Annonce.annonces.slug}) }}">{{ Annonce.annonces.titre}}</a> </h4>
+                      <h4><i class='fas fa-coins'></i> {{ Annonce.annonces.prix}} FCFA</h4>
+
+                      <small class="text-muted">{{ Annonce.annonces.users.nomComplet}}</small>
+                      <p class="card-text">{{ Annonce.annonces.description |slice(0,100) |raw}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <a href="{{ path('annonce',{'slug':Annonce.annonces.slug}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+                        </div>
+                        <small class="text-muted">{{ Annonce.annonces.updatedAt |format_date}}</small>
+                        <small class="alert alert-danger text-muted">expirée le {{ Annonce.annonces.expiredAt |format_date}}</small>
                       </div>
-                      <small class="text-muted">{{ MesAnnonceEnLigne.updatedAt |format_date}}</small>
-                      <small class="alert alert-danger text-muted">expirée le {{ MesAnnonceEnLigne.expiredAt |format_date}}</small>
+
+
                     </div>
-
-
                   </div>
                 </div>
-              </div>
+
               {% else %}
               <div class="alert alert-warning">
                 Il y n'a pas encore d'annonce en ligne
               </div>
+                {% endfor %}
               {% endfor %}
 
 

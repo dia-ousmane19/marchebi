@@ -7,12 +7,12 @@
 <div class="container" id="annonce-depot">
   <div class="jumbotron jumbotron-fluid border border-primary rounded ">
   <div class="container">
-    <h3><span class="badge badge-primary">Déposer une annonce</span></h3>
-    <p> <span class="badge badge-danger">recommandation</span> selectionner plusieurs images pour votre annonce. </p>
+    <h3><span class="badge badge-primary">Publier une annonce</span></h3>
+    <p> <span class="badge badge-danger">conseil</span> selectionner plusieurs images pour votre annonce. </p>
 
   </div>
 </div>
-  <div class="col-md-8 border p-4" style="box-shadow:1px 1px 5px 1px gray">
+  <div class="col-md-8 border p-4" >
     {{ include('annonces/_form.html.twig') }}
     <a class="btn mt-2 btn-sm btn-primary" id="annuler" href="{{ path('user_account') }}">Annuler</a>
    <a class="btn mt-2 btn-sm btn-primary" id="terminer" href="{{ path('user_account') }}">Cliquez ici</a>

@@ -14,7 +14,7 @@ class UserAccountController extends AbstractController
   /**
   * @Route("/mon-compte", name="user_account")
   */
-  public function index(AnnoncesRepository $annoncesRepository)
+  public function index(AnnoncesRepository $annoncesRepository,ImagesRepository $imagesRpo)
   {
     $session= new session();
     foreach ($session->getFlashBag()->get('warning', []) as $message) {
@@ -23,30 +23,43 @@ class UserAccountController extends AbstractController
     $user=$this->getUser();
     // annonce en expirer
     $users=$annoncesRepository->findAllAnnoncesByUserExpirer($user->getId());
-    // annonce en ligne
-    $usersEnLigne=$annoncesRepository->findAllAnnonceEnLigne($user->getId());
+
+    //je recupere id des annonces expirer
+    $IdDnnonceExpirer=[];
+    foreach ($users as  $value) {
+      $IdDnnonceExpirer[]=$value;
+    }
+      //je recupere id des annonces expirer
+      $annonceExpirerAvecUneSeuleImage=[];
+      foreach ($IdDnnonceExpirer as  $value) {
+        $annonceExpirerAvecUneSeuleImage[]=$imagesRpo->findByImagePrincipale($value);
+      }
+      // annonce en ligne
+      $usersEnLigne=$annoncesRepository->findAllAnnonceEnLigne($user->getId());
+
+      //je recupere id des annonces en cours
+      $IdDnnonce=[];
+      foreach ($usersEnLigne as  $value) {
+        $IdDnnonce[]=$value->getId();
+      }
+      //je recupere les annonces via les images
+      $annnonceAvecUneSeuleImage=[];
+      foreach ($IdDnnonce as  $id) {
+        $annnonceAvecUneSeuleImage[]=$imagesRpo->findByImagePrincipale($id);
+      }
+
+    //  dd($annnonceAvecUneSeuleImage);
+
 
 
     return $this->render('user_account/index.html.twig',[
-      'users'=> $users,
+      'users'=> $annonceExpirerAvecUneSeuleImage,
       'user' =>$user,
-      'usersEnLigne'=>$usersEnLigne
+      'usersEnLigne'=>$annnonceAvecUneSeuleImage
     ]);
-  }
-  /**
-  *
-  * @Route("/image-principale/{idAnnonce}", name="ImagePrincipale")
-  */
-  public function ImagePrincipale($idAnnonce,ImagesRepository $imagesRepository)
-  {
 
-   $MesImages=$imagesRepository->findByImage($idAnnonce);
-   
-
-    return $this->render('user_account/choisieImagePrincipale.html.twig',[
-      'MesImages' => $MesImages
-    ]);
   }
+
 
 
 
