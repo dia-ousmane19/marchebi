@@ -14,10 +14,11 @@ $(document).ready(function(){
   });
   $('#form').on('submit',function(e){
     e.preventDefault();
+    var form =$('#form');
 
     $('#loader').show();
     $.ajax({
-      url: "https://127.0.0.1:8000/annonces/new",
+      url: form.attr('action'),
       method:"POST",
       data:new FormData(this),
 
