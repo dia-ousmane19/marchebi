@@ -4,16 +4,17 @@
       <a href="{{ path('home')}}"><img class="mb-2" src="{{ asset('images/logo.jpg')}}" alt="" width="30" height="30"></a>
       <small class="d-block mb-3 text-muted">&copy; {{ 'now'| date('Y')}}</small>
     </div>
-    <div class="col-6 col-md">
+    <div class="col-6 col-md d-none">
       <h5>Newletters</h5>
-      <form>
+      <form method="post" action="{{path('newsletter_new')}}">
         <div class="form-group">
           <label for="exampleInputEmail1">Voulez-vous recevoir des notifications par e-mail</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-
+          <input type="email" class="form-control" id="newletters" name="newletters" aria-describedby="emailHelp" placeholder="Entrer votre email">
         </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <div class="alert alert-success" id="reponse_newletters"></div>
+        <button type="button" id="submit" class="btn btn-primary">Envoyer</button>
       </form>
+
     </div>
     <div class="col-6 col-md">
       <h5>Nous contacter</h5>
