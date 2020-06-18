@@ -42,7 +42,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/mon-compte, roles: ROLE_USER }
         - { path: ^/annonces/new, roles: ROLE_USER }
-        - { path: ^/annonces/upload, roles: ROLE_USER }
+
         - { path: ^/annonces, roles: ROLE_ADMIN }
 
-        - { path: ^/image-principale/, roles: ROLE_USER }
+    
