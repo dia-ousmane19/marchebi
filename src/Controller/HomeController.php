@@ -22,8 +22,10 @@ class HomeController extends AbstractController
   /**
   * @Route("/", name="home")
   */
-  public function index(RubriqueRepository $rubriqueRepository)
+  public function index(RubriqueRepository $rubriqueRepository,AnnoncesRepository $annoncesRepository)
   {
+    //annonce recente
+    $annoncesRecente=$annoncesRepository->findAnnonceRecentes();
 
     $allRubriques=$rubriqueRepository->AllRubriques();
     //dd();
@@ -32,7 +34,8 @@ class HomeController extends AbstractController
     // on recupere toutes les categories
     return $this->render('home/index.html.twig',[
       'allRubriques' => $allRubriques,
-      'InfoUser'=>$InfoUser
+      'InfoUser'=>$InfoUser,
+
     ]);
   }
   /**
@@ -104,6 +107,7 @@ $annonces = $paginator->paginate(
   {
     return $this->render('annonces/annonceInexistante.html.twig');
   }
+
 
   /**
   * @Route("/search-ajax", name="search_ajax_annonce")

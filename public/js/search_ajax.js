@@ -6,13 +6,18 @@ $(document).ready(function(){
   });
   $('#formSearch').on('submit',function(e){
     e.preventDefault();
-    var form=$(this);
+
+   // alert($('#formSearch').attr('action'));
+   // return false;
     var text=$('#ajax_search').val();
     $('#upload').show();
     //  alert(form.find('action');
     if ($.trim(text) !== '') {
       $.ajax({
-        url: "https://127.0.0.1:8000/search-ajax",
+        //je ne parviens pas a recuperer l'attribut action de form
+        //local:"https://127.0.0.1:8000/search-ajax"
+        //en ligne: https://xn--marchbi-fya.com/
+        url: "https://xn--marchbi-fya.com/search-ajax",
         method:'POST',
         data:{search:text},
         dataType:'text',
@@ -23,6 +28,7 @@ $(document).ready(function(){
           alert('Une erreur a été capturée '+xhr.status + " "+ xhr.statusText);
         },
         success: function(data){
+
           $('#upload').hide();
           $('#resultat').html(data);
         }
