@@ -17,7 +17,7 @@ $(document).ready(function(){
         //je ne parviens pas a recuperer l'attribut action de form
         //local:"https://127.0.0.1:8000/search-ajax"
         //en ligne: https://xn--marchbi-fya.com/
-        url: "https://xn--marchbi-fya.com/search-ajax",
+        url: "https://127.0.0.1:8000/search-ajax",
         method:'POST',
         data:{search:text},
         dataType:'text',
