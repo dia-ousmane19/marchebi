@@ -1,0 +1,10 @@
+<form id="formSearch" method="post" action="{{ path('search_ajax_annonce') }}">
+  <div class="form-row">
+    <div class="col-xs-12 mb-2 col-md-12 col-sm-12">
+      <input class="form-control mr-sm-2" type="search" name="ajax_search" id="ajax_search" placeholder="Tapez votre recherche ici" aria-label="Search">
+      <div class="" id="upload"><img src="{{asset("/ajax_loader.gif")}}"></div>
+
+    </div>
+  </div>
+</form>
+<div id="resultat"></div>

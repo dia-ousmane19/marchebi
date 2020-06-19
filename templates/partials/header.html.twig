@@ -11,43 +11,38 @@
         <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_login') }}">faîtes une annonce</a>
       </li>
       <!-- <li class="nav-item dropdown">
-        <a class="nav-link btn btn-sm m-1 btn-primary text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          categorie
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li> -->
-       {% if InfoUser is empty %}
-      <li class="nav-item">
-        <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_login') }}">Connexion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_register') }}">Inscription</a>
-      </li>
-      {% else %}
-      <li class="nav-item ">
-        <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('user_account') }}">Mon compte</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_logout') }}">Deconnexion</a>
-      </li>
-      {% endif %}
-    </ul>
-    <form class="form-inline my-2 my-lg-0"  id="header">
-      <div class="col-auto my-1">
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Catégorie</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-      <input class="form-control mr-sm-2" type="search" placeholder="Tapez des mots clés" aria-label="Search">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
-    </form>
+      <a class="nav-link btn btn-sm m-1 btn-primary text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      categorie
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Something else here</a>
   </div>
+</li> -->
+{% if InfoUser is empty %}
+<li class="nav-item">
+  <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_login') }}">Connexion</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_register') }}">Inscription</a>
+</li>
+{% else %}
+<li class="nav-item ">
+  <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('user_account') }}">Mon compte</a>
+</li>
+<li class="nav-item ">
+  <a class="nav-link btn btn-sm m-1 btn-primary text-white" href="{{ path('app_logout') }}">Deconnexion</a>
+</li>
+{% endif %}
+</ul>
+<div class="d-none" id="header" >
+  <form class="form-inline my-2 my-lg-0"  id="formSearch">
+    <input class="form-control mr-sm-2" type="search" name="" id="" placeholder="Tapez des mots clés" aria-label="Search">
+
+  </form>
+</div>
+
+</div>
 </nav>

@@ -116,5 +116,19 @@ class AnnoncesRepository extends ServiceEntityRepository
             ->getSingleResult()
         ;
     }
+    /**
+     * on chercher les annonces en fonction de ce user tape
+     * @return Annonces[] Returns an array of Annonces objects
+     */
+
+    public function findAnnonceBySearch($value): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.description LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 }

@@ -83,7 +83,7 @@ $annonces = $paginator->paginate(
   {
 
     $annonceComplete=$annoncesRepository->FindAnnonceBySlug($slug);
-    
+
     $ImagesAnnonce=$imagesRpo->findByImagePrincipale($annonceComplete->getId());
   //  dd($ImagesAnnonce);
 
@@ -103,6 +103,34 @@ $annonces = $paginator->paginate(
   public function AnnonceInexistante()
   {
     return $this->render('annonces/annonceInexistante.html.twig');
+  }
+
+  /**
+  * @Route("/search-ajax", name="search_ajax_annonce")
+  */
+  public function searchAnnonce(ImagesRepository $imagesRpo,AnnoncesRepository $annoncesRepository,Request $request)
+  {
+    $search=$request->request->get('search');
+    $resulat=$annoncesRepository->findAnnonceBySearch($search);
+    if ($resulat === null) {
+      echo "Aucune annonce trouvée.";
+      die();
+    }
+    $getAllIdAnnonce=[];
+    foreach ($resulat as  $value) {
+      $getAllIdAnnonce[]=$value->getId();
+    }
+    //dd($getAllIdAnnonce);
+    $resulatFinal=[];
+    foreach ($getAllIdAnnonce as  $value) {
+     $resulatFinal[]= $imagesRpo->findByImagePrincipale($value);
+    }
+
+
+
+   return $this->render('home/__resultat_recherche.html.twig',[
+     'rechercheTrouvee'=>$resulatFinal
+    ]);
   }
 
 

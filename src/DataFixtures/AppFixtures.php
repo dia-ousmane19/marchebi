@@ -157,7 +157,7 @@ class AppFixtures extends Fixture
       ->setNom($faker->imageUrl(640,480,'fashion'))
       ->setNom($faker->imageUrl(640,480,'nightlife'))
 
-      ->setImagePrincipale($faker->boolean)
+    
       ->setAnnonces($faker->randomElement($annonces))
       ;
       $manager->persist($image);

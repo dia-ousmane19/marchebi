@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 
 class AnnoncesType extends AbstractType
@@ -15,15 +17,24 @@ class AnnoncesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
+            ->add('titre',TextType::class,[
+              'attr'=>[
+                'placeholder'=>'Votre titre ici'
+              ]
+            ])
             ->add('prix',NumberType::class,[
               'required'=>false,
 
               'attr' =>[
-                'placeholder'=>'Si vous ne mettez pas de prix, nous allons afficher "sur commande" (optionel)'
+                'placeholder'=>'(optionel)'
               ]
             ])
-            ->add('description')
+            ->add('description',TextareaType::class,[
+              'attr'=>[
+                'placeholder'=>'Faites une description très détaillée pour faciliter la visibilité de votre annonce dans la recherche.',
+                'rows'=>'5'
+              ]
+            ])
             ->add('prix_negociable')
             ->add('possibilite_echange')
             //->add('users')

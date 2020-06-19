@@ -1,0 +1,18 @@
+
+<div class="list-group mb-1">
+  {% for item in rechercheTrouvee %}
+  {% for annonce in item %}
+  <a href="{{ path('annonce',{'slug':annonce.annonces.slug}) }}" class="list-group-item list-group-item-action flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{annonce.annonces.titre}}</h5>
+      <small>Publiée le {{annonce.annonces.updatedAt |format_date}}</small>
+    </div>
+    <p class="mb-1"> <img height="72" width="72" class="img-thumbnail" src="{{asset('uploads/images/images_annonces/')}}{{annonce.nom}}" alt=""> {{annonce.annonces.description |slice(0,90) |raw}}...</p>
+    <small>{{annonce.annonces.users.nomComplet}}</small>
+  </a>
+  {% endfor %}
+
+  {% endfor %}
+
+
+</div>

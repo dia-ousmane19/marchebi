@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Annonces{% endblock %}
+{% block title %}Nouvelles Annonces{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/annonce.css') }}">{% endblock %}
 {% block body %}
 {{ include('partials/header.html.twig') }}
 <div class="container" id="annonce-depot">
   <h3><span class="badge badge-primary">Publier une annonce</span></h3>
+  <div class="alert alert-danger">
+    Tous les champs doivent être remplis sauf ceux qui sont optionnels!
+  </div>
 
   <div class="col-md-8 border p-4" >
     {{ include('annonces/_form.html.twig') }}

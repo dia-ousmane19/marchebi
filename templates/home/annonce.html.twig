@@ -2,11 +2,13 @@
 
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock %}
 {% block title %}Annonce{% endblock %}
-{% block javascripts %}
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-{% endblock %}
+
 {% block body %}
 {{ include('partials/header.html.twig') }}
+<div class="container" id="index">
+{{ include('home/__form.html.twig') }}
+</div>
+
 
 
 <div class="container-fluid" style="margin-top:63px">
@@ -83,4 +85,8 @@
   </div>
   {{ include('partials/footer.html.twig') }}
 </div>
+{% endblock %}
+{% block javascripts %}
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script type="text/javascript" src="{{asset('js/search_ajax.js')}}"></script>
 {% endblock %}
