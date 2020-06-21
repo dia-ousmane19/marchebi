@@ -1,7 +1,14 @@
 <form id="formSearch" method="post" action="{{ absolute_url(path('search_ajax_annonce')) }}">
   <div class="form-row">
     <div class="col-xs-12 mb-2 col-md-12 col-sm-12">
-      <input class="form-control mr-sm-2" type="search" name="ajax_search" id="ajax_search" placeholder="Tapez votre recherche ici" aria-label="Search">
+      <!-- <input class="form-control mr-sm-2" type="search" name="ajax_search" id="ajax_search" placeholder="Tapez votre recherche ici" aria-label="Search"> -->
+      <div class="input-group">
+        <input class="form-control" type="search" name="ajax_search" id="ajax_search" placeholder="Tapez votre recherche ici" aria-label="Search">
+
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
       <div class="" id="upload"><img src="{{asset("/ajax_loader.gif")}}"></div>
 
     </div>
