@@ -36,7 +36,7 @@
 <div class="container" id="mon-compte">
   <div class="container" id="index">
   {{ include('home/__form.html.twig') }}
-  
+
   </div>
 
 </div>
@@ -72,7 +72,7 @@
                   <div class="col-md-4">
 
                     <div class="card mb-4 box-shadow">
-                      <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{AnnonceExp.nom}}" alt="Card image cap">
+                      <img class="d-block w-100 card-img-top" style="height:194px;width:278px"  src="{{ asset('/uploads/images/images_annonces/')}}{{AnnonceExp.nom}}" alt="Card image cap">
 
                       <div class="card-body">
                         <h4><a href="{{ path('annonce',{'slug':AnnonceExp.annonces.slug}) }}">{{ AnnonceExp.annonces.titre}}</a> </h4>
@@ -127,7 +127,7 @@
                 <div class="col-md-4">
                   <div class="card mb-4 box-shadow">
 
-                    <img class="d-block w-100 card-img-top"  src="{{ asset('/uploads/images/images_annonces/')}}{{Annonce.nom}}" alt="Card image cap"></a>
+                    <img class="d-block w-100 card-img-top img-thumbnail" style="height:194px;width:278px"  src="{{ asset('/uploads/images/images_annonces/')}}{{Annonce.nom}}" alt="Card image cap"></a>
 
                     <div class="card-body">
                       <h4><a href="{{ path('annonce',{'slug':Annonce.annonces.slug}) }}">{{ Annonce.annonces.titre}}</a> </h4>
