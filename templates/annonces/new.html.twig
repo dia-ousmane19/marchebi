@@ -14,15 +14,15 @@
     {{ include('annonces/_form.html.twig') }}
     <a class="btn mt-2 btn-sm btn-primary" id="annuler" href="{{ path('user_account') }}">Annuler</a>
     <a class="btn mt-2 btn-sm btn-primary" id="terminer" href="{{ path('user_account') }}">Cliquez ici</a>
-   <a class="btn mt-2 btn-sm btn-primary" id="recommencer" href="{{ path('annonces_new') }}">recommencer</a>
+    <a class="btn mt-2 btn-sm btn-primary" id="recommencer" href="{{ path('annonces_new') }}">recommencer</a>
   </div>
 
 
 
   <!-- <div class="border p-4" style="box-shadow:1px 1px 5px 1px gray">
-    <h1 class="display-4">Aj</h1>
+  <h1 class="display-4">Aj</h1>
 
-  </div> -->
+</div> -->
 
 
 
@@ -31,7 +31,17 @@
 
 {% endblock %}
 {% block javascripts %}
-<script type="text/javascript" src="{{asset('js/upload.js')}}">
+<script type="text/javascript" src="{{asset('js/upload.js')}}"></script>
+<script type="text/javascript">
+//ajout de champs de search
+$(document).ready(function(){
+  $('#annonces_quartier').chosen();
+  $('#annonces_region').chosen();
+  $('#annonces_etat').chosen();
+  $('#annonces_zone').chosen();
+  $('#annonces_categorie').chosen();
+});
+
 
 </script>
 {% endblock %}
