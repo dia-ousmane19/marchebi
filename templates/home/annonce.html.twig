@@ -13,8 +13,8 @@
 
 <div class="container-fluid" style="margin-top:63px">
   <div class="row">
-    <div class="col-md-8 mt-1 col-sm-12">
-      <div id="carouselExampleIndicators" class="carousel slide  rounded" data-ride="carousel">
+    <div class="col-md-6 col-xs-12 mt-1 col-sm-12">
+      <div id="carouselExampleIndicators"  class="carousel slide  rounded" data-ride="carousel">
         <ol class="carousel-indicators">
            <li data-target="#carouselExampleIndicators"  data-slide-to="0" class="active"> </li>
         {% for i in range(1,annonceComplete.images|length) %}
@@ -31,13 +31,13 @@
         </ol>
         <div class="carousel-inner" style="height:auto" >
           {% for ImageActiveAnnonce in ImageActive %}
-          <div class="carousel-item  active">
-              <img class="d-block w-100 img-thumbnail" style="width:640px;height:426px"  src="{{asset('uploads/images/images_annonces/')}}{{ImageActiveAnnonce.nom}}" alt="{{ImageActiveAnnonce.nom}}">
+          <div class="carousel-item   active">
+              <img class="d-block w-100 img-thumbnail" style="max-width:100%;max-width:100%"  src="{{asset('uploads/images/images_annonces/')}}{{ImageActiveAnnonce.nom}}" alt="{{ImageActiveAnnonce.nom}}">
           </div>
           {% endfor %}
           {% for MesImages in annonceComplete.images %}
-          <div class="carousel-item ">
-            <img class="d-block w-100 img-thumbnail" style="width:640px;height:426px"  src="{{asset('uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="{{MesImages.nom}}">
+          <div class="carousel-item " >
+            <img class="d-block w-100 img-thumbnail" style="max-width:100%;max-width:100%"   src="{{asset('uploads/images/images_annonces/')}}{{MesImages.nom}}" alt="{{MesImages.nom}}">
           </div>
           {% endfor %}
 
@@ -53,7 +53,7 @@
         </a>
       </div>
     </div>
-    <div class="col-md-4 col-sm-12 mt-1">
+    <div class="col-md-5 col-xs-12 col-sm-12 mt-1">
       <div class="jumbotron border border-primary rounded">
         <h1 class="display-4">{{ annonceComplete.titre }}</h1>
         <small class="text-muted"><i class="fas fa-tag"></i> {{ annonceComplete.categorie}}</small>
@@ -75,8 +75,14 @@
           {% endif %}
         </ul>
         <p class="text-muted"> <span class="badge badge-primary">{{ annonceComplete.users.nomComplet}}</span> </p>
+         <button type="button" id="show_contact" class="btn mb-1 btn-sm btn-primary" >contactez l'annonceur</button>
+         <div class="" id="contact_annonceur">
+           <h4><span class="badge badge-default">{{ annonceComplete.users.numeroDeTel }}</span></h4>
+           {% if annonceComplete.users.email is not empty %}
+           <h4><span class="badge badge-default">{{ annonceComplete.users.email }}</span></h4>
+           {% endif %}
+         </div>
 
-       <h3><span class="badge badge-success">{{ annonceComplete.users.numeroDeTel }}</span></h3>
        <p><a class="btn btn-sm btn-primary " href="{{ path('home') }}">Retour</a> </p>
 
 
@@ -89,4 +95,18 @@
 {% block javascripts %}
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script type="text/javascript" src="{{asset('js/search_ajax.js')}}"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#contact_annonceur').hide();
+  $('#show_contact').click(function (e) {
+    e.preventDefault();
+    $('#contact_annonceur').fadeIn('slow');
+
+
+
+  })
+
+});
+
+</script>
 {% endblock %}
