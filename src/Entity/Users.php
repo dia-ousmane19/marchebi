@@ -73,7 +73,7 @@ class Users implements UserInterface
     }
     public function __toString()
     {
-      return $this->email;
+      return $this->numero_de_tel;
     }
 
     public function getId(): ?int

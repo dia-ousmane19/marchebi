@@ -25,7 +25,7 @@
 </nav>
 
 <div class="container" id="form_inscription">
-  
+
 </div>
 <div >
   <div class="container" >
@@ -43,27 +43,9 @@
     </label>
   </div> -->
   <!-- start -->
- <form name="registration_form" method="post">
-  <div id="registration_form">
-    <div class="form-group">
-      <input type="email" id="registration_form_email" name="registration_form[email]" class="form-control form-control" placeholder="Adresse email (optionel)" />
-    </div>
-    <div class="form-group">
-      <input type="text" id="registration_form_NumeroDeTel" name="registration_form[NumeroDeTel]" required="required" class="form-control form-control" placeholder="Numéro de téléphone" />
-    </div>
-    <div class="form-group">
-      <input type="text" id="registration_form_NomComplet" name="registration_form[NomComplet]" required="required" class="form-control form-control" placeholder="Votre nom complet" />
-    </div>
-    <div class="form-group">
-      <input type="password" id="registration_form_Password" name="registration_form[Password]" required="required" placeholder="Votre mot de passe" class="form-control" />
-      <a class="btn mt-1 btn-sm btn-light" id="iconShowPasswordInscription" href="#"><i class="fas fa-eye-slash"></i></a>
-    </div>
-    <div class="form-group">
-      <button type="submit" id="registration_form_add" name="registration_form[add]" class="btn waves-effect btn-primary waves-light btn">Valider</button>
-    </div>
-    <input type="hidden" id="registration_form__token" name="registration_form[_token]" value="NnP6KHckjdokPgjWTe-c4j9wdm7AYtLJH6VFgFhAqzM" />
-  </div>
-</form>
+{{ form_start(formRegistration) }}
+{{ form_widget(formRegistration) }}
+{{ form_end(formRegistration) }}
 
   <!-- end -->
 
