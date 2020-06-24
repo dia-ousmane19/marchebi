@@ -43,9 +43,24 @@
     </label>
   </div> -->
   <!-- start -->
-{{ form_start(formRegistration) }}
-{{ form_widget(formRegistration) }}
-{{ form_end(formRegistration) }}
+  {{ form_start(registrationForm) }}
+   <div class="">
+     {{ form_row(registrationForm.email) }}
+   </div>
+   <div class="">
+     {{ form_row(registrationForm.NumeroDeTel) }}
+   </div>
+   <div class="">
+     {{ form_row(registrationForm.Password) }}
+   </div>
+   <div class="">
+     <a class="btn mt-1 btn-sm btn-light" id="iconShowPasswordInscription" href="#"><i class="fas fa-eye-slash"></i></a>
+   </div>
+   <div class="">
+     {{ form_row(registrationForm.NomComplet) }}
+   </div>
+
+  {{ form_end(registrationForm) }}
 
   <!-- end -->
 
