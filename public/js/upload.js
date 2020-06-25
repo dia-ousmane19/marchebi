@@ -29,8 +29,9 @@ $(document).ready(function(){
 
       error:function (xhr) {
         alert('Une erreur a été capturée '+xhr.status + " "+ xhr.statusText+" .Veuillez remplir tous les champs svp!"+);
-        $('#button_add_image').attr('disabled','true');
-        $('#recommencer').fadeIn('slow');
+            $('#button_add_image').attr('disabled','true');
+          $('#recommencer').fadeIn('slow');
+
 
       },
       success:function(data){
