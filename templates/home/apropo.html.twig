@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/home.css') }}">{% endblock %}
+{% block title %}A propos{% endblock %}
+
+{% block body %}
+{{ include('partials/header.html.twig') }}
+<div class="container">
+
+<div class="jumbotron" style="margin-top:100px">
+  <h2 class="bagde text-center badge-primary rounded">Africadel LTD (Afrique pour le développement local)</h2>
+  <p class="lead"> La société Africadel LTD a été fondée en 2018 par un groupe de Burkinabé et de Sénégalais, la dynamique de créer cette société est, née d’une véritable passion pour le développement local sur tout le continent africain. </p>
+  <hr class="my-4">
+
+    <h3 class="bagde text-center badge-primary rounded">Notre philosophie</h3>
+  <p>Réaliser des prestations de qualité dans une recherche constante de la satisfaction du client</p>
+  <h3 class="bagde text-center badge-primary rounded">Nos valeurs</h3>
+  <p> <strong> Honnêteté, « Savoir-faire et Qualité, Engagement, Disponibilité, Responsabilité, Confiance et Proximité »</strong></p>
+  <h3 class="bagde text-center badge-primary rounded">Nos domaines d’activités </h3>
+  <ul>
+    <li>Développer la communication au niveau local</li>
+    <li>Assister juridiquement et administrativement les personnes physiques et morales.</li>
+    <li>Aider a la création d’entreprise et a l’investissement.</li>
+    <li>Participer au commerce a travers la distribution, le partenariat, le marketing et la représentation commerciale.</li>
+    <li>Assister nos clients dans leurs démarches portuaires et aéroportuaires</li>
+    <li>Assister nos clients en moyens logistiques</li>
+  </ul>
+  <p><strong> Une équipe qualifiée composée de Juristes de haute facture avec une expérience internationale des affaires, d’économistes, de professeurs, de techniciens , de spécialistes, de professionnels de la communication, d’étudiants, et élevés.</strong> </p>
+  <p><span class="badge badge-primary rounded"> Informations complémentaires : </span> Registre du Commerce et du Crédit mobilier : <b>SN.DKR.2019.C.16758</b> , NINEA: <b>007431315</b> </p>
+</div>
+
+
+
+
+  {{ include('partials/footer.html.twig') }}
+</div>
+
+
+{% endblock %}

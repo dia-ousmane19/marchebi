@@ -137,5 +137,17 @@ $annonces = $paginator->paginate(
     ]);
   }
 
+    /**
+    * @Route("/a-propos", name="apropos")
+    */
+  public function apropo()
+  {
+      $InfoUser=$this->getUser();
+    return $this->render('home/apropo.html.twig',[
+      'InfoUser'=>$InfoUser,
+
+    ]);
+  }
+
 
 }
