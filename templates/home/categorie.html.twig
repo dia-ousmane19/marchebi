@@ -30,7 +30,7 @@
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
               <div class="" style="height:194px;" >
-                <img class="d-block w-100 card-img-top img-thumbnail" id="center" style="max-height:100%;max-width:100%"  src="{{asset('uploads/images/images_annonces/')}}{{MonAnnonce.nom}}" alt="Images pour annonces">
+                <img class="d-block w-100  card-img-top img-thumbnail"  data-lightbox="roadtrip" style="max-height:100%;max-width:100%"  src="{{asset('uploads/images/images_annonces/')}}{{MonAnnonce.nom}}" alt="Images pour annonces">
               </div>
               <div class="card-body">
                 <h4><a href="{{ path('annonce',{'slug':MonAnnonce.annonces.slug}) }}">{{ MonAnnonce.annonces.titre}}</a> </h4>

@@ -31,7 +31,7 @@ class RegistrationFormType extends AbstractType
               'label' => false,
               'attr' => [
                 'class'=>'form-control',
-                'placeholder' =>'Numéro de téléphone'
+                'placeholder' =>'Numéro de téléphone avec l\'indicatif de votre pays.'
               ]
             ])
             ->add('NomComplet',TextType::class,[
@@ -62,7 +62,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            
+
             ->add('add', SubmitType::class, [
                'label' => 'Valider',
                'attr' => [

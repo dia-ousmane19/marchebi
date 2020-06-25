@@ -82,11 +82,10 @@
                         <p class="card-text">{{ AnnonceExp.annonces.description |slice(0,100) |raw}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
-                            <a href="{{ path('annonce',{'slug':AnnonceExp.annonces.slug}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+                            <a href="{{ path('annonce',{'slug':AnnonceExp.annonces.slug}) }}"  class="btn btn-sm btn-primary">Voir détails</a>
 
                           </div>
-                          <small class="text-muted">{{ AnnonceExp.annonces.updatedAt |format_date}}</small>
-                          <small class="alert alert-danger text-muted">expirée le {{ AnnonceExp.annonces.expiredAt |format_date}}</small>
+                          <small class="text-muted"> publié le{{ AnnonceExp.annonces.updatedAt |format_date}}</small>
 
                         </div>
 
@@ -137,10 +136,9 @@
                       <p class="card-text">{{ Annonce.annonces.description |slice(0,100) |raw}}</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <a href="{{ path('annonce',{'slug':Annonce.annonces.slug}) }}" type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
+                          <a href="{{ path('annonce',{'slug':Annonce.annonces.slug}) }}"  class="btn btn-sm btn-primary">Voir détails</a>
                         </div>
-                        <small class="text-muted">{{ Annonce.annonces.updatedAt |format_date}}</small>
-                        <small class="alert alert-danger text-muted">expirée le {{ Annonce.annonces.expiredAt |format_date}}</small>
+                        <small class="text-muted">publié le {{ Annonce.annonces.updatedAt |format_date}}</small>
                       </div>
 
 
